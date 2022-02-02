@@ -3,6 +3,10 @@ import SearchQuotes from './SerachQuotes';
 import AddQuotes from './AddQuotes';
 
 const Quotes = () => {
+
+
+
+
   return (
     <div>
       <h1>Quotes</h1>
