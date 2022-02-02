@@ -30,7 +30,6 @@ const SearchQuotes = () => {
   }
   useEffect(() => {
     async function fetchData() {
-      console.log(url);
       let response = await fetch(`${url}`);
       const resData = await response.json();
       setData(resData);
