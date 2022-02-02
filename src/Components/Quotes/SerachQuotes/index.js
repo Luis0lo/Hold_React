@@ -16,12 +16,12 @@ const SearchQuotes = () => {
     setAuthorName(e.target.value);
   }
   function handleRanking(e) {
-    setQuoteRanking(e.target.value - 1);
+    setQuoteRanking(e.target.value);
   }
   function handleClick(e) {
     e.preventDefault();
     if (quoteRanking > 0) {
-      setUrl(`${API_URL}/quotes/${quoteRanking}`);
+      setUrl(`${API_URL}/quotes/?ranking=${quoteRanking}`);
     } else if (authorName.length) {
       setUrl(`${API_URL}/quotes/?author=${authorName}`);
     } else {
@@ -30,6 +30,7 @@ const SearchQuotes = () => {
   }
   useEffect(() => {
     async function fetchData() {
+      console.log(url);
       let response = await fetch(`${url}`);
       const resData = await response.json();
       setData(resData);
