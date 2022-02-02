@@ -5,11 +5,11 @@ import { useState, useEffect } from 'react';
 const SearchQuotes = () => {
   const API_URL = process.env.REACT_APP_API_URL;
 
-  const [isFetching, setIsFetching] = useState(false);
+  // const [isFetching, setIsFetching] = useState(false);
   const [authorName, setAuthorName] = useState('');
   const [quoteRanking, setQuoteRanking] = useState('');
   const [data, setData] = useState(null);
-  const [error, setError] = useState('');
+  // const [error, setError] = useState('');
   const [url, setUrl] = useState(null);
 
   function handleName(e) {
