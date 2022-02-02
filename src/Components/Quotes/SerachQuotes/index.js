@@ -21,11 +21,11 @@ const SearchQuotes = () => {
   function handleClick(e) {
     e.preventDefault();
     if (quoteRanking > 0) {
-      setUrl(`${API_URL}${quoteRanking}`);
+      setUrl(`${API_URL}/quotes/${quoteRanking}`);
     } else if (authorName.length) {
-      setUrl(`${API_URL}?author=${authorName}`);
+      setUrl(`${API_URL}/quotes/?author=${authorName}`);
     } else {
-      setUrl(`${API_URL}`);
+      setUrl(`${API_URL}/quotes`);
     }
   }
   useEffect(() => {
