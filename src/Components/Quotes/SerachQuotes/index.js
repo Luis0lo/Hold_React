@@ -47,7 +47,7 @@ const SearchQuotes = ({ API_URL }) => {
           Search
         </Button>
       </form>
-      <DisplayQuotes data={data} isLoading={isLoading} error={error} />
+      <DisplayQuotes data={data} isLoading={isLoading} error={error} API_URL={API_URL} />
     </Container>
   );
 };

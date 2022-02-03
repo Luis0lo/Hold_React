@@ -26,12 +26,11 @@ const AddQuotes = ({ API_URL }) => {
         body: JSON.stringify(data),
       });
       const { payload } = await response.json();
-      console.log(JSON.stringify(payload, null, 2))
+      console.log(JSON.stringify(payload, null, 2));
     }
     postQuote();
     reset();
   };
-
 
   return (
     <Container>
