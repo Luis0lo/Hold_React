@@ -3,6 +3,7 @@ import SearchQuotes from './SerachQuotes';
 import AddQuotes from './AddQuotes';
 
 const Quotes = () => {
+  const API_URL = process.env.REACT_APP_API_URL;
 
 
 
@@ -12,7 +13,7 @@ const Quotes = () => {
       <h1>Quotes</h1>
       <button>Add</button>
       <button>Search</button>
-      <SearchQuotes />
+      <SearchQuotes API_URL={API_URL}/>
       <AddQuotes />
     </div>
   );
