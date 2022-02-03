@@ -2,6 +2,13 @@ import React from 'react';
 import DisplayQuotes from './DisplayQuotes';
 import { useState } from 'react';
 import useFetch from '../../../Hooks/useFetch';
+import {
+  FormLabel,
+  FormControl,
+  Input,
+  Button,
+  Container,
+} from '@chakra-ui/react';
 
 const SearchQuotes = ({ API_URL }) => {
   const [authorName, setAuthorName] = useState('');
@@ -26,20 +33,22 @@ const SearchQuotes = ({ API_URL }) => {
     }
   }
 
-  
-
   return (
-    <div>
-      <h1>Search Quotes</h1>
+    <Container centerContent>
+      <h1>Search Quotes </h1>
       <form onSubmit={handleClick}>
-        <label>By Author</label>
-        <input onChange={handleName} type="text" />
-        <label>By Ranking</label>
-        <input onChange={handleRanking} type="number" />
-        <button type="submit">Search</button>
+        <FormControl>
+          <FormLabel mt={4}>By Author</FormLabel>
+          <Input onChange={handleName} type="text" />
+          <FormLabel mt={4}>By Ranking</FormLabel>
+          <Input onChange={handleRanking} type="number" />
+        </FormControl>
+        <Button mt={4} colorScheme="teal" type="submit">
+          Search
+        </Button>
       </form>
-      <DisplayQuotes data={data} isLoading={isLoading} error={error}/>
-    </div>
+      <DisplayQuotes data={data} isLoading={isLoading} error={error} />
+    </Container>
   );
 };
 

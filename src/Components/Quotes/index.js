@@ -14,7 +14,7 @@ const Quotes = () => {
       <button>Add</button>
       <button>Search</button>
       <SearchQuotes API_URL={API_URL}/>
-      <AddQuotes />
+      {/* <AddQuotes API_URL={API_URL}/> */}
     </div>
   );
 };
