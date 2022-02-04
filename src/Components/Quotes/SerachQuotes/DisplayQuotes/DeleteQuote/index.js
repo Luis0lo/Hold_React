@@ -16,7 +16,7 @@ const DeleteQuote = ({ quoteId, API_URL }) => {
       console.log(response.status);
     }
     deleteQuote();
-  }, [id]);
+  }, [API_URL, id]);
 
   function handleClick(e) {
     setId(e.target.value);
