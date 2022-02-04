@@ -6,6 +6,9 @@ const DeleteQuote = ({ quoteId, API_URL }) => {
   const [id, setId] = useState(null);
 
   useEffect(() => {
+    if (!id) {
+      return;
+    }
     async function deleteQuote() {
       const response = await fetch(`${API_URL}/quotes/${id}`, {
         method: 'DELETE',
@@ -13,7 +16,7 @@ const DeleteQuote = ({ quoteId, API_URL }) => {
       console.log(response.status);
     }
     deleteQuote();
-  }, [API_URL, id]);
+  }, [id]);
 
   function handleClick(e) {
     setId(e.target.value);
