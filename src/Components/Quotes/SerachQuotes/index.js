@@ -14,7 +14,7 @@ const SearchQuotes = ({ API_URL, setId, setEdit, setDelete, delet }) => {
   const [authorName, setAuthorName] = useState('');
   const [quoteRanking, setQuoteRanking] = useState('');
   const [url, setUrl] = useState('');
-  const { data, error, isLoading } = useFetch(url);
+  const {data, error, isLoading } = useFetch(url);
 
   function handleName(e) {
     setAuthorName(e.target.value);
