@@ -1,7 +1,8 @@
 import { Button, Container } from '@chakra-ui/react';
 
-const DeleteButton = ({ quoteId, setId }) => {
+const DeleteButton = ({ quoteId, setId, setDelete }) => {
   function handleClick(e) {
+    setDelete(true)
     setId(e.target.value);
   }
 

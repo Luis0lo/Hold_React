@@ -10,7 +10,7 @@ import {
   Container,
 } from '@chakra-ui/react';
 
-const SearchQuotes = ({ API_URL, setId, setEdit }) => {
+const SearchQuotes = ({ API_URL, setId, setEdit, setDelete }) => {
   const [authorName, setAuthorName] = useState('');
   const [quoteRanking, setQuoteRanking] = useState('');
   const [url, setUrl] = useState('');
@@ -47,7 +47,15 @@ const SearchQuotes = ({ API_URL, setId, setEdit }) => {
           Search
         </Button>
       </form>
-      <DisplayQuotes data={data} isLoading={isLoading} error={error} API_URL={API_URL} setId={setId} setEdit={setEdit}/>
+      <DisplayQuotes
+        data={data}
+        isLoading={isLoading}
+        error={error}
+        API_URL={API_URL}
+        setId={setId}
+        setEdit={setEdit}
+        setDelete={setDelete}
+      />
     </Container>
   );
 };
