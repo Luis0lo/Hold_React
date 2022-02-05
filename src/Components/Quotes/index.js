@@ -17,7 +17,7 @@ const Quotes = () => {
       });
     }
     deleteQuote();
-  }, [API_URL, id, edit]);
+  }, [API_URL, id]);
 
   return (
     <div>
