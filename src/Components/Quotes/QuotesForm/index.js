@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import {
@@ -10,7 +9,7 @@ import {
   Container,
 } from '@chakra-ui/react';
 
-const AddQuotes = ({ API_URL }) => {
+const QuotesForm = ({ API_URL, setEdit, edit, id }) => {
   const {
     handleSubmit,
     register,
@@ -19,16 +18,32 @@ const AddQuotes = ({ API_URL }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    async function postQuote() {
-      const response = await fetch(`${API_URL}/quotes`, {
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
-        body: JSON.stringify(data),
-      });
-      const { payload } = await response.json();
-      console.log(JSON.stringify(payload, null, 2));
+    if (id) {
+      async function editQuote() {
+        const response = await fetch(`${API_URL}/quotes/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const { payload } = await response.json();
+        console.log(JSON.stringify(payload, null, 2));
+
+        setEdit(false);
+      }
+      editQuote();
+    } else {
+      async function postQuote() {
+        const response = await fetch(`${API_URL}/quotes`, {
+          headers: { 'Content-Type': 'application/json' },
+          method: 'POST',
+          body: JSON.stringify(data),
+        });
+        const { payload } = await response.json();
+        console.log(JSON.stringify(payload, null, 2));
+      }
+      postQuote();
     }
-    postQuote();
+
     reset();
   };
 
@@ -82,11 +97,12 @@ const AddQuotes = ({ API_URL }) => {
           isLoading={isSubmitting}
           type="submit"
         >
-          Submit
+          {edit && <>Edit</>}
+          {!edit && <>Submit</>}
         </Button>
       </form>
     </Container>
   );
 };
 
-export default AddQuotes;
+export default QuotesForm;
