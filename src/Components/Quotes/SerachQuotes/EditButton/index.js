@@ -8,7 +8,7 @@ const EditButton = ({ quoteId, setId, setEdit }) => {
     setEdit(true);
   }
   return (
-    <Container>
+    <Container> 
       <Button value={quoteId} onClick={handleClick}>
         Edit
       </Button>
