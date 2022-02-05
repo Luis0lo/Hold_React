@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import css from './sharesInput.module.css'
+import css from './sharesInput.module.css';
 import {
   FormErrorMessage,
   FormLabel,
@@ -7,6 +7,7 @@ import {
   Input,
   Button,
   Container,
+  Select,
 } from '@chakra-ui/react';
 
 const SharesInput = ({ addShares }) => {
@@ -23,7 +24,7 @@ const SharesInput = ({ addShares }) => {
   };
 
   return (
-    <Container p={4} className={css.sharesInputContainer} >
+    <Container p={4} className={css.sharesInputContainer}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={errors.name}>
           <FormLabel htmlFor="shareTicker">Share Ticker</FormLabel>
@@ -55,15 +56,20 @@ const SharesInput = ({ addShares }) => {
               minLength: { value: 1, message: 'Minimum length should be 4' },
             })}
           />
-          <FormLabel htmlFor="currency">currency</FormLabel>
-          <Input
+          <FormLabel htmlFor="currency">Currency</FormLabel>
+          {/* <Input
             id="currency"
-            placeholder="currency"
+            placeholder="Currency"
             {...register('currency', {
               required: 'This is required',
               minLength: { value: 1, message: 'Minimum length should be 4' },
             })}
-          />
+          /> */}
+          <Select {...register('currency')} placeholder="Bougth in...">
+            <option value="USD">USD</option>
+            <option value="GBP">GBP</option>
+            <option value="EUR">EUR</option>
+          </Select>
           <FormErrorMessage>
             {errors.name && errors.name.message}
           </FormErrorMessage>

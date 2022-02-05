@@ -35,7 +35,8 @@ const SearchQuotes = ({ API_URL, setId, setEdit, setDelete, delet }) => {
 
   return (
     <Container centerContent>
-      <h1>Search Quotes </h1>
+      <p>Search quotes either by author or ranking.
+Not sure! just click search and you'll get all the quotes back.</p>
       <form onSubmit={handleClick}>
         <FormControl>
           <FormLabel mt={4}>By Author</FormLabel>
@@ -43,11 +44,12 @@ const SearchQuotes = ({ API_URL, setId, setEdit, setDelete, delet }) => {
           <FormLabel mt={4}>By Ranking</FormLabel>
           <Input onChange={handleRanking} type="number" />
         </FormControl>
-        <Button mt={4} colorScheme="teal" type="submit">
+        <Button mt={4} colorScheme="teal" type="submit" >
           Search
         </Button>
       </form>
-      {!delet && (
+      {/* {!delet && 
+      ( */}
         <DisplayQuotes
           data={data}
           isLoading={isLoading}
@@ -57,7 +59,7 @@ const SearchQuotes = ({ API_URL, setId, setEdit, setDelete, delet }) => {
           setEdit={setEdit}
           setDelete={setDelete}
         />
-      )}
+      {/* )} */}
     </Container>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import EditQuote from '../EditButton';
 import DeleteQuote from '../DeleteButton';
+import { Container } from '@chakra-ui/react';
 
 const DisplayQuotes = ({
   data,
@@ -12,26 +13,34 @@ const DisplayQuotes = ({
   setDelete,
 }) => {
   return data ? (
-    <div>
-      <h1>Display Quotes</h1>
+    <Container>
+      <Container
+        my={5}
+      >{`We got ${data.payload.length} quotes so far`}</Container>
       {data.payload.map((quote) => {
         return (
-          <div key={quote.id}>
-            <p>by: {quote.author}</p>
-            <p> {quote.quote}</p>
+          <Container mt={4} maxW="container.lg" key={quote.id}>
+            <p>{quote.author}</p>
+            <em>
+              <b>
+                <p>"{quote.quote}"</p>
+              </b>{' '}
+            </em>
             <p>{quote.explanation}</p>
-            <p>{quote.ranking}</p>
-            <EditQuote setId={setId} quoteId={quote.id} setEdit={setEdit} />
-            <DeleteQuote
-              quoteId={quote.id}
-              setId={setId}
-              setDelete={setDelete}
-            />
+            <Container my={4} style={{ display: 'flex' }}>
+              <EditQuote setId={setId} quoteId={quote.id} setEdit={setEdit} />
+              <p>{'⭐'.repeat(quote.ranking)}</p>
+              <DeleteQuote
+                quoteId={quote.id}
+                setId={setId}
+                setDelete={setDelete}
+              />
+            </Container>
             <hr />
-          </div>
+          </Container>
         );
       })}
-    </div>
+    </Container>
   ) : (
     <>
       {isLoading && <div>Loading</div>}

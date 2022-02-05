@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import userShares from '../../Data';
 import SharesInput from './SharesInput';
+import SharesViewer from './SharesViewer';
 const Holdings = () => {
   const [data, setData] = useState(userShares);
 
@@ -13,6 +14,7 @@ const Holdings = () => {
   return (
     <div>
       <SharesInput addShares={addShares} />
+      <SharesViewer data={data}/>
     </div>
   );
 };

@@ -38,6 +38,7 @@ const QuotesForm = ({ API_URL, setEdit, edit, id, setAdd }) => {
           method: 'POST',
           body: JSON.stringify(data),
         });
+        console.log(response.status)
         const { payload } = await response.json();
         console.log(JSON.stringify(payload, null, 2));
       }

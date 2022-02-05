@@ -9,7 +9,7 @@ const EditButton = ({ quoteId, setId, setEdit }) => {
   }
   return (
     <Container> 
-      <Button value={quoteId} onClick={handleClick}>
+      <Button m={1} colorScheme='blue' variant='outline' size='sm' value={quoteId} onClick={handleClick}>
         Edit
       </Button>
     </Container>

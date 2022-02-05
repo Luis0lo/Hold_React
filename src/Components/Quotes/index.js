@@ -6,12 +6,12 @@ import css from './quotes.module.css';
 
 const Quotes = () => {
   const API_URL = process.env.REACT_APP_API_URL;
-  const [edit, setEdit] = useState(false);
-  const [id, setId] = useState('');
-  const [delet, setDelete] = useState(false);
-  const [add, setAdd] = useState(false);
-  const [search, setSearch] = useState(false);
-
+  const [id, setId] = useState('');// required to build url and delete/edit
+  const [edit, setEdit] = useState(false);//required to trigger the edit request
+  const [delet, setDelete] = useState(false);//required to trigger the delete request
+  const [add, setAdd] = useState(false);//display add and edit input field
+  const [search, setSearch] = useState(false);//display search input field
+console.log(search)
   useEffect(() => {
     if (!id || delet === false) {
       return;
@@ -21,6 +21,7 @@ const Quotes = () => {
         method: 'DELETE',
       });
     }
+    setSearch(false)
     deleteQuote();
   }, [API_URL, id, delet]);
 
@@ -32,7 +33,7 @@ const Quotes = () => {
         </div>
 
         <Button
-          onClick={() => setAdd(!add)}
+          onClick={() => {setAdd(!add)}}
           colorScheme="teal"
           variant="solid"
           m={2}

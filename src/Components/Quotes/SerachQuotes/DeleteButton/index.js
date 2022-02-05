@@ -1,5 +1,6 @@
 import { Button, Container } from '@chakra-ui/react';
 
+
 const DeleteButton = ({ quoteId, setId, setDelete }) => {
   function handleClick(e) {
     setDelete(true)
@@ -8,7 +9,7 @@ const DeleteButton = ({ quoteId, setId, setDelete }) => {
 
   return (
     <Container>
-      <Button value={quoteId} onClick={handleClick}>
+      <Button  m={1} colorScheme='red' variant='outline' size='sm' value={quoteId} onClick={handleClick}>
         Delete
       </Button>
     </Container>
