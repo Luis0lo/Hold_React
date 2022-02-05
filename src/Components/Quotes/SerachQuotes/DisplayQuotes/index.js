@@ -1,8 +1,16 @@
 import React from 'react';
-import EditQuote from './EditButton';
-import DeleteQuote from './DeleteButton';
+import EditQuote from '../EditButton';
+import DeleteQuote from '../DeleteButton';
 
-const DisplayQuotes = ({ data, isLoading, error, API_URL, setId, setEdit, setDelete }) => {
+const DisplayQuotes = ({
+  data,
+  isLoading,
+  error,
+  API_URL,
+  setId,
+  setEdit,
+  setDelete,
+}) => {
   return data ? (
     <div>
       <h1>Display Quotes</h1>
@@ -14,7 +22,11 @@ const DisplayQuotes = ({ data, isLoading, error, API_URL, setId, setEdit, setDel
             <p>{quote.explanation}</p>
             <p>{quote.ranking}</p>
             <EditQuote setId={setId} quoteId={quote.id} setEdit={setEdit} />
-            <DeleteQuote quoteId={quote.id} setId={setId} setDelete={setDelete}/>
+            <DeleteQuote
+              quoteId={quote.id}
+              setId={setId}
+              setDelete={setDelete}
+            />
             <hr />
           </div>
         );

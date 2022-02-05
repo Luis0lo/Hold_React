@@ -9,7 +9,7 @@ import {
   Container,
 } from '@chakra-ui/react';
 
-const QuotesForm = ({ API_URL, setEdit, edit, id }) => {
+const QuotesForm = ({ API_URL, setEdit, edit, id, setAdd }) => {
   const {
     handleSubmit,
     register,
@@ -43,7 +43,7 @@ const QuotesForm = ({ API_URL, setEdit, edit, id }) => {
       }
       postQuote();
     }
-
+    setAdd(false);
     reset();
   };
 
