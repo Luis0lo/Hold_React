@@ -11,15 +11,14 @@ const DisplayQuotes = ({
   setId,
   setEdit,
   setDelete,
+  quotes,
 }) => {
   return data ? (
     <Container>
-      <Container
-        my={5}
-      >{`We got ${data.payload.length} quotes so far`}</Container>
-      {data.payload.map((quote) => {
+      <Container my={5}>{`We got ${quotes.length} quotes so far`}</Container>
+      {quotes.map((quote, i) => {
         return (
-          <Container mt={4} maxW="container.lg" key={quote.id}>
+          <Container mt={4} maxW="container.lg" key={i}>
             <p>{quote.author}</p>
             <em>
               <b>

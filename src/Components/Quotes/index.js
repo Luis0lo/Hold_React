@@ -35,6 +35,7 @@ const Quotes = () => {
       setQuotes([...quotes.slice(0, index), ...quotes.slice(index + 1)]);
     }
     deleteQuote();
+    setDelete(false)
     setId('');
   }, [quotes, API_URL, id, delet]);
 

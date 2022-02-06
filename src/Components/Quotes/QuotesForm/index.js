@@ -18,14 +18,13 @@ const QuotesForm = ({ API_URL, setEdit, edit, id, setQuotes, quotes }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    if (id) {
+    if (id && edit) {
       async function editQuote() {
         const response = await fetch(`${API_URL}/quotes/${id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
         });
-        console.log('before', quotes);
 
         const { payload } = await response.json();
         const index = quotes.findIndex((quote) => {
@@ -40,6 +39,7 @@ const QuotesForm = ({ API_URL, setEdit, edit, id, setQuotes, quotes }) => {
         console.log(JSON.stringify(payload, null, 2));
         setEdit(false);
       }
+
       editQuote();
     } else {
       async function postQuote() {

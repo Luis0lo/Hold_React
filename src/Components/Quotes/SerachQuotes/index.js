@@ -67,6 +67,7 @@ const SearchQuotes = ({
         setId={setId}
         setEdit={setEdit}
         setDelete={setDelete}
+        quotes={quotes}
       />
     </Container>
   );
