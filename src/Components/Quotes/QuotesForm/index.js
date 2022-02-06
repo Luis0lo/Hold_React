@@ -25,9 +25,18 @@ const QuotesForm = ({ API_URL, setEdit, edit, id, setQuotes, quotes }) => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
         });
+        console.log('before', quotes);
 
         const { payload } = await response.json();
-        setQuotes([...quotes, ...payload]);
+        const index = quotes.findIndex((quote) => {
+          return quote.id === Number(id);
+        });
+
+        setQuotes([
+          ...quotes.slice(0, index),
+          ...payload,
+          ...quotes.slice(index + 1),
+        ]);
         console.log(JSON.stringify(payload, null, 2));
         setEdit(false);
       }

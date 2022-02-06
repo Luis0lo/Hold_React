@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import useFetch from '../../Hooks/useFetch';
 import SearchQuotes from './SerachQuotes';
 import QuotesForm from './QuotesForm';
 import { Button, Container } from '@chakra-ui/react';
@@ -17,7 +16,6 @@ const Quotes = () => {
     async function getQuotes() {
       const res = await fetch(`${API_URL}/quotes`);
       const data = await res.json();
-      console.log('payload', data.payload);
       setQuotes(data.payload);
     }
     getQuotes();
@@ -31,11 +29,10 @@ const Quotes = () => {
       await fetch(`${API_URL}/quotes/${id}`, {
         method: 'DELETE',
       });
-      setQuotes(
-        quotes.filter((quote) => {
-          return quote.id !== id;
-        })
-      );
+      const index = quotes.findIndex((quote) => {
+        return quote.id === Number(id);
+      });
+      setQuotes([...quotes.slice(0, index), ...quotes.slice(index + 1)]);
     }
     deleteQuote();
     setId('');
