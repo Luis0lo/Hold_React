@@ -10,11 +10,19 @@ import {
   Container,
 } from '@chakra-ui/react';
 
-const SearchQuotes = ({ API_URL, setId, setEdit, setDelete, delet }) => {
+const SearchQuotes = ({
+  API_URL,
+  setId,
+  setEdit,
+  setDelete,
+  delet,
+  quotes,
+  setQuotes,
+}) => {
   const [authorName, setAuthorName] = useState('');
   const [quoteRanking, setQuoteRanking] = useState('');
   const [url, setUrl] = useState('');
-  const {data, error, isLoading } = useFetch(url);
+  const { data, error, isLoading } = useFetch(url);
 
   function handleName(e) {
     setAuthorName(e.target.value);
@@ -35,8 +43,10 @@ const SearchQuotes = ({ API_URL, setId, setEdit, setDelete, delet }) => {
 
   return (
     <Container centerContent>
-      <p>Search quotes either by author or ranking.
-Not sure! just click search and you'll get all the quotes back.</p>
+      <p>
+        Search quotes either by author or ranking. Not sure! just click search
+        and you'll get all the quotes back.
+      </p>
       <form onSubmit={handleClick}>
         <FormControl>
           <FormLabel mt={4}>By Author</FormLabel>
@@ -44,22 +54,20 @@ Not sure! just click search and you'll get all the quotes back.</p>
           <FormLabel mt={4}>By Ranking</FormLabel>
           <Input onChange={handleRanking} type="number" />
         </FormControl>
-        <Button mt={4} colorScheme="teal" type="submit" >
+        <Button mt={4} colorScheme="teal" type="submit">
           Search
         </Button>
       </form>
-      {/* {!delet && 
-      ( */}
-        <DisplayQuotes
-          data={data}
-          isLoading={isLoading}
-          error={error}
-          API_URL={API_URL}
-          setId={setId}
-          setEdit={setEdit}
-          setDelete={setDelete}
-        />
-      {/* )} */}
+
+      <DisplayQuotes
+        data={data}
+        isLoading={isLoading}
+        error={error}
+        API_URL={API_URL}
+        setId={setId}
+        setEdit={setEdit}
+        setDelete={setDelete}
+      />
     </Container>
   );
 };

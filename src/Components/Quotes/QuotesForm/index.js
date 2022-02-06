@@ -9,7 +9,7 @@ import {
   Container,
 } from '@chakra-ui/react';
 
-const QuotesForm = ({ API_URL, setEdit, edit, id, setAdd }) => {
+const QuotesForm = ({ API_URL, setEdit, edit, id, setQuotes, quotes }) => {
   const {
     handleSubmit,
     register,
@@ -25,9 +25,10 @@ const QuotesForm = ({ API_URL, setEdit, edit, id, setAdd }) => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
         });
-        const { payload } = await response.json();
-        console.log(JSON.stringify(payload, null, 2));
 
+        const { payload } = await response.json();
+        setQuotes([...quotes, ...payload]);
+        console.log(JSON.stringify(payload, null, 2));
         setEdit(false);
       }
       editQuote();
@@ -38,13 +39,13 @@ const QuotesForm = ({ API_URL, setEdit, edit, id, setAdd }) => {
           method: 'POST',
           body: JSON.stringify(data),
         });
-        console.log(response.status)
+        console.log(response.status);
         const { payload } = await response.json();
+        setQuotes([...quotes, ...payload]);
         console.log(JSON.stringify(payload, null, 2));
       }
       postQuote();
     }
-    setAdd(false);
     reset();
   };
 

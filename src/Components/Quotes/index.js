@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+// import useFetch from '../../Hooks/useFetch';
 import SearchQuotes from './SerachQuotes';
 import QuotesForm from './QuotesForm';
 import { Button, Container } from '@chakra-ui/react';
@@ -6,12 +7,22 @@ import css from './quotes.module.css';
 
 const Quotes = () => {
   const API_URL = process.env.REACT_APP_API_URL;
-  const [id, setId] = useState('');// required to build url and delete/edit
-  const [edit, setEdit] = useState(false);//required to trigger the edit request
-  const [delet, setDelete] = useState(false);//required to trigger the delete request
-  const [add, setAdd] = useState(false);//display add and edit input field
-  const [search, setSearch] = useState(false);//display search input field
-console.log(search)
+  const [quotes, setQuotes] = useState([]);
+  const [id, setId] = useState(''); // required to build url and delete/edit
+  const [edit, setEdit] = useState(false); //required to trigger the edit request
+  const [delet, setDelete] = useState(false); //required to trigger the delete request
+
+  useEffect(() => {
+    //set the state for quotes
+    async function getQuotes() {
+      const res = await fetch(`${API_URL}/quotes`);
+      const data = await res.json();
+      console.log('payload', data.payload);
+      setQuotes(data.payload);
+    }
+    getQuotes();
+  }, [API_URL]);
+
   useEffect(() => {
     if (!id || delet === false) {
       return;
@@ -20,10 +31,15 @@ console.log(search)
       await fetch(`${API_URL}/quotes/${id}`, {
         method: 'DELETE',
       });
+      setQuotes(
+        quotes.filter((quote) => {
+          return quote.id !== id;
+        })
+      );
     }
-    setSearch(false)
     deleteQuote();
-  }, [API_URL, id, delet]);
+    setId('');
+  }, [quotes, API_URL, id, delet]);
 
   return (
     <Container mt={5}>
@@ -32,42 +48,32 @@ console.log(search)
           <h1>Quotes</h1>
         </div>
 
-        <Button
-          onClick={() => {setAdd(!add)}}
-          colorScheme="teal"
-          variant="solid"
-          m={2}
-        >
+        <Button colorScheme="teal" variant="solid" m={2}>
           Add
         </Button>
-        <Button
-          onClick={() => setSearch(!search)}
-          colorScheme="teal"
-          variant="outline"
-          m={2}
-        >
+        <Button colorScheme="teal" variant="outline" m={2}>
           Search
         </Button>
       </div>
-      {search && !edit && (
-        <SearchQuotes
-          API_URL={API_URL}
-          setId={setId}
-          setEdit={setEdit}
-          setDelete={setDelete}
-          delet={delet}
-        />
-      )}
 
-      {(add || edit) && (
-        <QuotesForm
-          API_URL={API_URL}
-          edit={edit}
-          setEdit={setEdit}
-          id={id}
-          setAdd={setAdd}
-        />
-      )}
+      <SearchQuotes
+        API_URL={API_URL}
+        setId={setId}
+        setEdit={setEdit}
+        setDelete={setDelete}
+        delet={delet}
+        setQuotes={setQuotes}
+        quotes={quotes}
+      />
+
+      <QuotesForm
+        API_URL={API_URL}
+        edit={edit}
+        setEdit={setEdit}
+        id={id}
+        quotes={quotes}
+        setQuotes={setQuotes}
+      />
     </Container>
   );
 };
