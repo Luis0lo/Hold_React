@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DisplayQuotes from './DisplayQuotes';
 import { useState } from 'react';
 import useFetch from '../../../Hooks/useFetch';
@@ -24,6 +24,11 @@ const SearchQuotes = ({
   const [url, setUrl] = useState('');
   const { data, error, isLoading } = useFetch(url);
 
+  useEffect(() => {
+    setQuotes(data.payload);
+  }, [setQuotes, data.payload]);
+  // data && setQuotes(data.payload);
+
   function handleName(e) {
     setAuthorName(e.target.value);
   }
@@ -40,7 +45,6 @@ const SearchQuotes = ({
       setUrl(`${API_URL}/quotes`);
     }
   }
-
   return (
     <Container centerContent>
       <p>
