@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import SearchQuotes from './SerachQuotes';
 import QuotesForm from './QuotesForm';
 import { Button, Container } from '@chakra-ui/react';
+import useFetch from '../../Hooks/useFetch';
+
 import css from './quotes.module.css';
 
 const Quotes = () => {
@@ -10,6 +12,14 @@ const Quotes = () => {
   const [id, setId] = useState(''); // required to build url and delete/edit
   const [edit, setEdit] = useState(false); //required to trigger the edit request
   const [delet, setDelete] = useState(false); //required to trigger the delete request
+  const [url, setUrl] = useState('');
+  const { data, error, isLoading } = useFetch(url);
+  console.log(data, id)
+
+  
+  useEffect(() => {
+    setQuotes(data.payload);
+  }, [setQuotes, data.payload]);
 
   useEffect(() => {
     //set the state for quotes
@@ -35,9 +45,10 @@ const Quotes = () => {
       setQuotes([...quotes.slice(0, index), ...quotes.slice(index + 1)]);
     }
     deleteQuote();
-    setDelete(false)
+    setDelete(false);
     setId('');
   }, [quotes, API_URL, id, delet]);
+  
 
   return (
     <Container mt={5}>
@@ -55,6 +66,10 @@ const Quotes = () => {
       </div>
 
       <SearchQuotes
+      data={data}
+      isLoading={isLoading}
+      error={error}
+        setUrl={setUrl}
         API_URL={API_URL}
         setId={setId}
         setEdit={setEdit}
@@ -66,6 +81,7 @@ const Quotes = () => {
 
       <QuotesForm
         API_URL={API_URL}
+        data={data}
         edit={edit}
         setEdit={setEdit}
         id={id}

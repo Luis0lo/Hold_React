@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-
+import { useEffect, useState } from 'react';
 import {
   FormErrorMessage,
   FormLabel,
@@ -8,14 +8,36 @@ import {
   Button,
   Container,
 } from '@chakra-ui/react';
+import React from 'react';
 
-const QuotesForm = ({ API_URL, setEdit, edit, id, setQuotes, quotes }) => {
+const QuotesForm = ({
+  API_URL,
+  setEdit,
+  edit,
+  id,
+  setQuotes,
+  quotes,
+  data,
+}) => {
+  const [editForm, setEditForm] = useState('');
+  console.log(editForm);
+
+  //set the data to change input field values
+  useEffect(() => {
+    if (id && edit) {
+      let quoteData = quotes.filter((quote) => {
+        return quote.id === Number(id);
+      });
+      setEditForm(...quoteData);
+    }
+  }, [edit, quotes, id]);
+
   const {
     handleSubmit,
     register,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm({ defaultValues: editForm });
 
   const onSubmit = (data) => {
     if (id && edit) {
@@ -27,6 +49,7 @@ const QuotesForm = ({ API_URL, setEdit, edit, id, setQuotes, quotes }) => {
         });
 
         const { payload } = await response.json();
+
         const index = quotes.findIndex((quote) => {
           return quote.id === Number(id);
         });
@@ -65,6 +88,7 @@ const QuotesForm = ({ API_URL, setEdit, edit, id, setQuotes, quotes }) => {
           <FormLabel htmlFor="authorName">Author Name</FormLabel>
           <Input
             id="author"
+            name="author"
             placeholder="author"
             {...register('author', {
               required: 'This is required',
@@ -74,6 +98,7 @@ const QuotesForm = ({ API_URL, setEdit, edit, id, setQuotes, quotes }) => {
           <FormLabel htmlFor="quote">Quote</FormLabel>
           <Input
             id="quote"
+            name="quote"
             placeholder="Quote"
             {...register('quote', {
               required: 'This is required',
@@ -82,7 +107,8 @@ const QuotesForm = ({ API_URL, setEdit, edit, id, setQuotes, quotes }) => {
           />
           <FormLabel htmlFor="explanation">Explanation</FormLabel>
           <Input
-            id="quote"
+            id="explanation"
+            name="explanation"
             placeholder="Explanation"
             {...register('explanation', {
               required: 'This is required',
@@ -91,7 +117,8 @@ const QuotesForm = ({ API_URL, setEdit, edit, id, setQuotes, quotes }) => {
           />
           <FormLabel htmlFor="ranking">Ranking</FormLabel>
           <Input
-            id="quote"
+            id="ranking"
+            name="ranking"
             placeholder="Ranking"
             {...register('ranking', {
               required: 'This is required',
