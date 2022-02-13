@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import DisplayQuotes from './DisplayQuotes';
 import { useState } from 'react';
-import useFetch from '../../../Hooks/useFetch';
 import {
   FormLabel,
   FormControl,
@@ -12,22 +11,24 @@ import {
 
 const SearchQuotes = ({
   API_URL,
+  data, 
+  error, 
+  isLoading,
   setId,
   setEdit,
   setDelete,
-  delet,
+  setUrl,
   quotes,
   setQuotes,
 }) => {
   const [authorName, setAuthorName] = useState('');
   const [quoteRanking, setQuoteRanking] = useState('');
-  const [url, setUrl] = useState('');
-  const { data, error, isLoading } = useFetch(url);
+  // const [url, setUrl] = useState('');
+  // const { data, error, isLoading } = useFetch(url);
 
-  useEffect(() => {
-    setQuotes(data.payload);
-  }, [setQuotes, data.payload]);
-  // data && setQuotes(data.payload);
+  // useEffect(() => {
+  //   setQuotes(data.payload);
+  // }, [setQuotes, data.payload]);
 
   function handleName(e) {
     setAuthorName(e.target.value);
