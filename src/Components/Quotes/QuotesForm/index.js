@@ -19,8 +19,13 @@ const QuotesForm = ({
   quotes,
   data,
 }) => {
-  const [editForm, setEditForm] = useState('');
-  console.log(editForm);
+  const [inputFields, setInputFields] = useState({
+    "author": "",
+    "quote": "",
+    "explanation": "",
+    "ranking": ''
+});
+  console.log(inputFields);
 
   //set the data to change input field values
   useEffect(() => {
@@ -28,7 +33,7 @@ const QuotesForm = ({
       let quoteData = quotes.filter((quote) => {
         return quote.id === Number(id);
       });
-      setEditForm(...quoteData);
+      setInputFields(...quoteData);
     }
   }, [edit, quotes, id]);
 
@@ -37,7 +42,7 @@ const QuotesForm = ({
     register,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm({ defaultValues: editForm });
+  } = useForm({ defaultValues: inputFields });
 
   const onSubmit = (data) => {
     if (id && edit) {
