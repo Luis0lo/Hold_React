@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import DisplayQuotes from './DisplayQuotes';
 import { useState } from 'react';
 import {
@@ -23,12 +22,7 @@ const SearchQuotes = ({
 }) => {
   const [authorName, setAuthorName] = useState('');
   const [quoteRanking, setQuoteRanking] = useState('');
-  // const [url, setUrl] = useState('');
-  // const { data, error, isLoading } = useFetch(url);
-
-  // useEffect(() => {
-  //   setQuotes(data.payload);
-  // }, [setQuotes, data.payload]);
+  
 
   function handleName(e) {
     setAuthorName(e.target.value);
