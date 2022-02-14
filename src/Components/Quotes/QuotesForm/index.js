@@ -25,7 +25,6 @@ const QuotesForm = ({
     "explanation": "",
     "ranking": ''
 });
-  console.log(inputFields);
 
   //set the data to change input field values
   useEffect(() => {

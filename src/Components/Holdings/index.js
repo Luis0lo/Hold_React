@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import userShares from '../../Data';
+import userShares from '../../libs';
 import SharesInput from './SharesInput';
 import SharesViewer from './SharesViewer';
 const Holdings = () => {

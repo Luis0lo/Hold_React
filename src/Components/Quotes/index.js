@@ -6,8 +6,8 @@ import useFetch from '../../Hooks/useFetch';
 
 import css from './quotes.module.css';
 
-const Quotes = () => {
-  const API_URL = process.env.REACT_APP_API_URL;
+const Quotes = ({API_URL}) => {
+  // const API_URL = process.env.REACT_APP_API_URL;
   const [quotes, setQuotes] = useState([]);
   const [id, setId] = useState(''); // required to build url and delete/edit
   const [edit, setEdit] = useState(false); //required to trigger the edit request
