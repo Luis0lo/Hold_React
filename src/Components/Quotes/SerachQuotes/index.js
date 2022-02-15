@@ -22,7 +22,6 @@ const SearchQuotes = ({
 }) => {
   const [authorName, setAuthorName] = useState('');
   const [quoteRanking, setQuoteRanking] = useState('');
-  
 
   function handleName(e) {
     setAuthorName(e.target.value);
