@@ -16,6 +16,22 @@ const Quotes = ({API_URL}) => {
   const { data, error, isLoading } = useFetch(url);
   console.log(data, id)
 
+  const [inputFields, setInputFields] = useState(id ? {
+    author: "luis",
+    quote: "llo",
+    explanation: "hi",
+    ranking: 5
+}: null);
+
+  //set the data to change input field values
+  useEffect(() => {
+    if (id && edit) {
+      let quoteData = quotes.filter((quote) => {
+        return quote.id === Number(id);
+      });
+      setInputFields(...quoteData);
+    }
+  }, [edit, quotes, id]);
   
   useEffect(() => {
     setQuotes(data.payload);
@@ -79,7 +95,7 @@ const Quotes = ({API_URL}) => {
         quotes={quotes}
       />
 
-      <QuotesForm
+      {inputFields ? <QuotesForm
         API_URL={API_URL}
         data={data}
         edit={edit}
@@ -87,7 +103,8 @@ const Quotes = ({API_URL}) => {
         id={id}
         quotes={quotes}
         setQuotes={setQuotes}
-      />
+        inputFields={inputFields}
+      /> : <></>}
     </Container>
   );
 };

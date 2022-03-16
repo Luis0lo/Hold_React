@@ -18,23 +18,25 @@ const QuotesForm = ({
   setQuotes,
   quotes,
   data,
+  inputFields
 }) => {
-  const [inputFields, setInputFields] = useState({
-    "author": "",
-    "quote": "",
-    "explanation": "",
-    "ranking": ''
-});
 
-  //set the data to change input field values
-  useEffect(() => {
-    if (id && edit) {
-      let quoteData = quotes.filter((quote) => {
-        return quote.id === Number(id);
-      });
-      setInputFields(...quoteData);
-    }
-  }, [edit, quotes, id]);
+//   const [inputFields, setInputFields] = useState(id ? {
+//     author: "luis",
+//     quote: "llo",
+//     explanation: "hi",
+//     ranking: 5
+// }: null);
+
+//   //set the data to change input field values
+//   useEffect(() => {
+//     if (id && edit) {
+//       let quoteData = quotes.filter((quote) => {
+//         return quote.id === Number(id);
+//       });
+//       setInputFields(...quoteData);
+//     }
+//   }, [edit, quotes, id]);
 
   const {
     handleSubmit,
@@ -86,6 +88,7 @@ const QuotesForm = ({
   };
 
   return (
+    
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={errors.name}>
