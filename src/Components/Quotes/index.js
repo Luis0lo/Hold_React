@@ -6,22 +6,19 @@ import useFetch from '../../Hooks/useFetch';
 
 import css from './quotes.module.css';
 
-const Quotes = ({API_URL}) => {
+const Quotes = ({ API_URL }) => {
   // const API_URL = process.env.REACT_APP_API_URL;
+  const [renderForm, setRenderForm] = useState(false);
+  const [renderSearch, setRenderSearch] = useState(false)
   const [quotes, setQuotes] = useState([]);
   const [id, setId] = useState(''); // required to build url and delete/edit
   const [edit, setEdit] = useState(false); //required to trigger the edit request
   const [delet, setDelete] = useState(false); //required to trigger the delete request
   const [url, setUrl] = useState('');
   const { data, error, isLoading } = useFetch(url);
-  console.log(data, id)
+  console.log(data, id);
 
-  const [inputFields, setInputFields] = useState(id ? {
-    author: "luis",
-    quote: "llo",
-    explanation: "hi",
-    ranking: 5
-}: null);
+  const [inputFields, setInputFields] = useState(null);
 
   //set the data to change input field values
   useEffect(() => {
@@ -32,7 +29,7 @@ const Quotes = ({API_URL}) => {
       setInputFields(...quoteData);
     }
   }, [edit, quotes, id]);
-  
+
   useEffect(() => {
     setQuotes(data.payload);
   }, [setQuotes, data.payload]);
@@ -64,7 +61,20 @@ const Quotes = ({API_URL}) => {
     setDelete(false);
     setId('');
   }, [quotes, API_URL, id, delet]);
-  
+
+  function handleRenderForm(){
+    setInputFields({});
+    setRenderForm(!renderForm)
+    setRenderSearch(false)
+    if (renderForm){
+      setInputFields(null)
+    }
+  }
+  function handleRenderSearch(){
+    setRenderSearch(!renderSearch)
+    setRenderForm(false)
+  }
+  console.log('inputFields state', inputFields)
 
   return (
     <Container mt={5}>
@@ -73,18 +83,25 @@ const Quotes = ({API_URL}) => {
           <h1>Quotes</h1>
         </div>
 
-        <Button colorScheme="teal" variant="solid" m={2}>
+        <Button
+          colorScheme="teal"
+          variant="solid"
+          m={2}
+          onClick={() => handleRenderForm()}
+        >
           Add
         </Button>
-        <Button colorScheme="teal" variant="outline" m={2}>
+        <Button colorScheme="teal" variant="outline" m={2} 
+          onClick={() => handleRenderSearch()}
+        >
           Search
         </Button>
       </div>
 
-      <SearchQuotes
-      data={data}
-      isLoading={isLoading}
-      error={error}
+      {renderSearch && <SearchQuotes
+        data={data}
+        isLoading={isLoading}
+        error={error}
         setUrl={setUrl}
         API_URL={API_URL}
         setId={setId}
@@ -93,18 +110,25 @@ const Quotes = ({API_URL}) => {
         delet={delet}
         setQuotes={setQuotes}
         quotes={quotes}
-      />
+        setRenderForm={setRenderForm}
+      />}
 
-      {inputFields ? <QuotesForm
-        API_URL={API_URL}
-        data={data}
-        edit={edit}
-        setEdit={setEdit}
-        id={id}
-        quotes={quotes}
-        setQuotes={setQuotes}
-        inputFields={inputFields}
-      /> : <></>}
+      {inputFields && edit | renderForm  ? (
+        <QuotesForm
+          API_URL={API_URL}
+          data={data}
+          edit={edit}
+          setEdit={setEdit}
+          id={id}
+          quotes={quotes}
+          setQuotes={setQuotes}
+          inputFields={inputFields}
+          setInputFields={setInputFields}
+          setRenderForm={setRenderForm}
+        />
+      ) : (
+        <></>
+      )}
     </Container>
   );
 };

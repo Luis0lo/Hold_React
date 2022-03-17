@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import {
   FormErrorMessage,
   FormLabel,
@@ -18,7 +18,8 @@ const QuotesForm = ({
   setQuotes,
   quotes,
   data,
-  inputFields
+  inputFields,
+  setRenderForm
 }) => {
 
 //   const [inputFields, setInputFields] = useState(id ? {
@@ -65,7 +66,7 @@ const QuotesForm = ({
           ...payload,
           ...quotes.slice(index + 1),
         ]);
-        console.log(JSON.stringify(payload, null, 2));
+        // console.log(JSON.stringify(payload, null, 2));
         setEdit(false);
       }
 
@@ -80,7 +81,8 @@ const QuotesForm = ({
         console.log(response.status);
         const { payload } = await response.json();
         setQuotes([...quotes, ...payload]);
-        console.log(JSON.stringify(payload, null, 2));
+        // console.log(JSON.stringify(payload, null, 2));
+        setRenderForm(false)
       }
       postQuote();
     }
@@ -96,7 +98,7 @@ const QuotesForm = ({
           <Input
             id="author"
             name="author"
-            placeholder="author"
+            placeholder="Author"
             {...register('author', {
               required: 'This is required',
               minLength: { value: 1, message: 'Minimum length should be 4' },

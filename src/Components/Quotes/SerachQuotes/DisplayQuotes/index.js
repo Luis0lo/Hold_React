@@ -23,7 +23,7 @@ const DisplayQuotes = ({
             <em>
               <b>
                 <p>"{quote.quote}"</p>
-              </b>{' '}
+              </b>
             </em>
             <p>{quote.explanation}</p>
             <Container my={4} style={{ display: 'flex' }}>

@@ -19,6 +19,7 @@ const SearchQuotes = ({
   setUrl,
   quotes,
   setQuotes,
+  setRenderForm
 }) => {
   const [authorName, setAuthorName] = useState('');
   const [quoteRanking, setQuoteRanking] = useState('');
@@ -52,7 +53,7 @@ const SearchQuotes = ({
           <FormLabel mt={4}>By Ranking</FormLabel>
           <Input onChange={handleRanking} type="number" />
         </FormControl>
-        <Button mt={4} colorScheme="teal" type="submit">
+        <Button mt={4} colorScheme="teal" type="submit" onClick={() => setRenderForm(false)}>
           Search
         </Button>
       </form>

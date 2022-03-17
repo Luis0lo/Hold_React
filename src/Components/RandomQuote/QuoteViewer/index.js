@@ -21,7 +21,7 @@ const QuoteViewer = ({ randQuote }) => {
       <Box maxW="lg" borderWidth="1px" borderRadius="lg" overflow="hidden">
         <Box p="6">
           <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
-            "{randQuote.quote}""
+            "{randQuote.quote}"
           </Box>
 
           <Box mt="2" alignItems="center">
@@ -48,7 +48,7 @@ const QuoteViewer = ({ randQuote }) => {
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Quote Explanation</ModalHeader>
+          <ModalHeader>What does it mean?</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <p>{randQuote.explanation}</p>
