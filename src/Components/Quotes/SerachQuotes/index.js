@@ -1,5 +1,6 @@
 import DisplayQuotes from './DisplayQuotes';
 import { useState } from 'react';
+import FadeIn from 'react-fade-in';
 import {
   FormLabel,
   FormControl,
@@ -10,8 +11,8 @@ import {
 
 const SearchQuotes = ({
   API_URL,
-  data, 
-  error, 
+  data,
+  error,
   isLoading,
   setId,
   setEdit,
@@ -19,7 +20,7 @@ const SearchQuotes = ({
   setUrl,
   quotes,
   setQuotes,
-  setRenderForm
+  setRenderForm,
 }) => {
   const [authorName, setAuthorName] = useState('');
   const [quoteRanking, setQuoteRanking] = useState('');
@@ -41,34 +42,41 @@ const SearchQuotes = ({
     }
   }
   return (
-    <Container centerContent>
-      <p>
-        Search quotes either by author or ranking. Not sure! just click search
-        and you'll get all the quotes back.
-      </p>
-      <form onSubmit={handleClick}>
-        <FormControl>
-          <FormLabel mt={4}>By Author</FormLabel>
-          <Input onChange={handleName} type="text" />
-          <FormLabel mt={4}>By Ranking</FormLabel>
-          <Input onChange={handleRanking} type="number" />
-        </FormControl>
-        <Button mt={4} colorScheme="teal" type="submit" onClick={() => setRenderForm(false)}>
-          Search
-        </Button>
-      </form>
+    <FadeIn>
+      <Container centerContent>
+        <p>
+          Search quotes either by author or ranking. Not sure! just click search
+          and you'll get all the quotes back.
+        </p>
+        <form onSubmit={handleClick}>
+          <FormControl>
+            <FormLabel mt={4}>By Author</FormLabel>
+            <Input onChange={handleName} type="text" />
+            <FormLabel mt={4}>By Ranking</FormLabel>
+            <Input onChange={handleRanking} type="number" />
+          </FormControl>
+          <Button
+            mt={4}
+            colorScheme="teal"
+            type="submit"
+            onClick={() => setRenderForm(false)}
+          >
+            Search
+          </Button>
+        </form>
 
-      <DisplayQuotes
-        data={data}
-        isLoading={isLoading}
-        error={error}
-        API_URL={API_URL}
-        setId={setId}
-        setEdit={setEdit}
-        setDelete={setDelete}
-        quotes={quotes}
-      />
-    </Container>
+        <DisplayQuotes
+          data={data}
+          isLoading={isLoading}
+          error={error}
+          API_URL={API_URL}
+          setId={setId}
+          setEdit={setEdit}
+          setDelete={setDelete}
+          quotes={quotes}
+        />
+      </Container>
+    </FadeIn>
   );
 };
 

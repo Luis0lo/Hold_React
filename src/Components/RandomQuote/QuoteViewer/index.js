@@ -19,11 +19,10 @@ const QuoteViewer = ({ randQuote }) => {
   return (
     <Container>
       <Box maxW="lg" borderWidth="1px" borderRadius="lg" overflow="hidden">
-        <Box p="6">
+        <Box p="2">
           <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
             "{randQuote.quote}"
           </Box>
-
           <Box mt="2" alignItems="center">
             {Array(5)
               .fill('')
@@ -36,6 +35,7 @@ const QuoteViewer = ({ randQuote }) => {
           </Box>
         </Box>
         <Button
+          mb="3"
           colorScheme="green"
           size="xs"
           variant="outline"

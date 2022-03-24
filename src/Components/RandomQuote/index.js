@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Spinner } from '@chakra-ui/react';
+import FadeIn from 'react-fade-in'
 import QuoteViewer from './QuoteViewer';
 
 const RandomQuote = ({ API_URL }) => {
-  const [randQuote, setRandQuote] = useState('');
+  const [randQuote, setRandQuote] = useState(null);
 
   useEffect(() => {
     async function getRandQuote() {
@@ -15,7 +17,19 @@ const RandomQuote = ({ API_URL }) => {
 
   return (
     <div>
-      <QuoteViewer randQuote={randQuote} />
+      {randQuote ? (
+        <FadeIn>
+        <QuoteViewer randQuote={randQuote} />
+        </FadeIn>
+      ) : (
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="md"
+        />
+      )}
     </div>
   );
 };
