@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import FadeIn from 'react-fade-in';
-import ReactStars from 'react-rating-stars-component';
 import {
   FormErrorMessage,
   FormLabel,
@@ -30,7 +29,6 @@ const QuotesForm = ({
   } = useForm({ defaultValues: inputFields });
 
   const onSubmit = (data) => {
-    console.log(data)
     if (id && edit) {
       async function editQuote() {
         const response = await fetch(`${API_URL}/quotes/${id}`, {
