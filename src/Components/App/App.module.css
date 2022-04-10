@@ -1,0 +1,13 @@
+.App {
+    text-align: center;
+  }
+.LuisRodrigues {
+    font-size: 1.5rem;
+    background-color: rgb(15, 8, 116);
+    color: white;
+  }
+.quotesContainer {
+    padding: 2rem 0;
+    border-top: 2px solid;
+    background-color: rgba(236, 236, 252, 0.164)
+}

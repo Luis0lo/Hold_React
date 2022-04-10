@@ -57,14 +57,6 @@ const SharesInput = ({ addShares }) => {
             })}
           />
           <FormLabel htmlFor="currency">Currency</FormLabel>
-          {/* <Input
-            id="currency"
-            placeholder="Currency"
-            {...register('currency', {
-              required: 'This is required',
-              minLength: { value: 1, message: 'Minimum length should be 4' },
-            })}
-          /> */}
           <Select {...register('currency')} placeholder="Bougth in...">
             <option value="USD">USD</option>
             <option value="GBP">GBP</option>
@@ -80,7 +72,7 @@ const SharesInput = ({ addShares }) => {
           isLoading={isSubmitting}
           type="submit"
         >
-          Submit
+          Add
         </Button>
       </form>
     </Container>

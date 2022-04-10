@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import userShares from '../../libs';
 import SharesInput from './SharesInput';
 import SharesViewer from './SharesViewer';
+import { Container } from '@chakra-ui/react';
+
 const Holdings = () => {
   const [data, setData] = useState(userShares);
 
@@ -12,10 +14,10 @@ const Holdings = () => {
   console.log('data edited', data);
 
   return (
-    <div>
+    <Container maxW="container.xl" my="5">
       <SharesInput addShares={addShares} />
-      <SharesViewer data={data}/>
-    </div>
+      <SharesViewer data={data} />
+    </Container>
   );
 };
 
