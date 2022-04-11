@@ -6,7 +6,7 @@ import { Container } from '@chakra-ui/react';
 
 const Holdings = () => {
   const [data, setData] = useState(userShares);
-  const [updateShare, setUpdateShare] = useState(null);
+  // const [updateShare, setUpdateShare] = useState(null);
 
 
 
