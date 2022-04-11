@@ -16,7 +16,7 @@ const SharesViewer = ({ data }) => {
         <Tbody>
           {data.map((share, i) => {
             return (
-              <Tr key={share.price}>
+              <Tr key={i}>
                 <Td>{share.name}</Td>
                 <Td>{share.quantity}</Td>
                 <Td>{share.price}</Td>
