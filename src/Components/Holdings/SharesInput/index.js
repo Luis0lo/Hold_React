@@ -11,7 +11,6 @@ import {
 } from '@chakra-ui/react';
 
 const SharesInput = ({ addShares }) => {
-
   const {
     handleSubmit,
     register,
@@ -56,7 +55,7 @@ const SharesInput = ({ addShares }) => {
               },
               min: {
                 value: 0.01,
-                message: 'the minimun is 0.01 shares',
+                message: 'The minimum is 0.01 shares',
               },
             })}
           />
@@ -67,33 +66,34 @@ const SharesInput = ({ addShares }) => {
         <FormControl isInvalid={errors.price}>
           <FormLabel htmlFor="price">Price</FormLabel>
           <Input
+            // type='number' //it only accept whole numbers
             id="price"
             placeholder="Price"
             {...register('price', {
               required: 'How much did cost?',
-              validate: value => value >= 0.01 || 'error message',
+              validate: (value) => value >= 0.01 || 'The minimum is 0.01',
               valueAsNumber: true,
-              // pattern: {
-              //   value: /^(0|[1-9]\d*)(\.\d+)?$/,
-              //   message: 'Please enter a number',
-              // },
-              // min: {
-              //   value: 0.1,
-              //   message: 'Price must be positive',
-              // },
             })}
           />
           <FormErrorMessage>
             {errors.price && errors.price.message}
           </FormErrorMessage>
         </FormControl>
-        <FormControl>
+        <FormControl isInvalid={errors.currency}>
           <FormLabel htmlFor="currency">Currency</FormLabel>
-          <Select {...register('currency')} placeholder="Bougth in...">
+          <Select
+            {...register('currency', {
+              required: 'Select one option',
+            })}
+            placeholder="Bougth in..."
+          >
             <option value="USD">USD</option>
             <option value="GBP">GBP</option>
             <option value="EUR">EUR</option>
           </Select>
+          <FormErrorMessage>
+            {errors.currency && errors.currency.message}
+          </FormErrorMessage>
         </FormControl>
         <Button
           mt={4}
