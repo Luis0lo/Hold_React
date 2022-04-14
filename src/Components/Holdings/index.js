@@ -21,7 +21,7 @@ const Holdings = () => {
 
   function twoDecimalPlaces(number) {
     const str = number.toString().split('.');
-    let decimal = str[1].slice(0, 2);
+    const decimal = str[1].slice(0, 2);
     return Number(str[0] + '.' + decimal);
 }
 
@@ -29,7 +29,6 @@ const Holdings = () => {
     const numberOfShares = data[index].quantity + quantity;
     const currentTotal = quantity * price;
     const sharePrice = twoDecimalPlaces((data[index].total + currentTotal) / numberOfShares);
-
     const totalInvested = numberOfShares * sharePrice
     setData([...data.slice(0, index), {...data[index], price: sharePrice, total: totalInvested, quantity: numberOfShares}, ...data.slice(index + 1)])
     console.log('here',data)
