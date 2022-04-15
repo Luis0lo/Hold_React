@@ -3,6 +3,7 @@ import userShares from '../../libs';
 import SharesInput from './SharesInput';
 import SharesViewer from './SharesViewer';
 import { Container } from '@chakra-ui/react';
+import { twoDecimalPlacesPrice } from '../../helper';
 
 const Holdings = () => {
   const [data, setData] = useState(userShares);
@@ -19,16 +20,10 @@ const Holdings = () => {
     setData([...data, newData]);
   }
 
-  function twoDecimalPlaces(number) {
-    const str = number.toString().split('.');
-    const decimal = str[1].slice(0, 2);
-    return Number(str[0] + '.' + decimal);
-}
-
   function updateShares(index, { quantity, price }) {
     const numberOfShares = data[index].quantity + quantity;
     const currentTotal = quantity * price;
-    const sharePrice = twoDecimalPlaces((data[index].total + currentTotal) / numberOfShares);
+    const sharePrice = twoDecimalPlacesPrice((data[index].total + currentTotal) / numberOfShares);
     const totalInvested = numberOfShares * sharePrice
     setData([...data.slice(0, index), {...data[index], price: sharePrice, total: totalInvested, quantity: numberOfShares}, ...data.slice(index + 1)])
     console.log('here',data)
