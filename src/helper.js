@@ -1,4 +1,7 @@
-export function twoDecimalPlacesPrice(number) {
+ export function twoDecimalPlacesPrice(number) {
+  if (isNaN(number)) {
+    throw new TypeError('it must be a number');
+  }
   const str = number.toString().split('.');
   if (str.length > 1) {
     const decimal = str[1].slice(0, 2);
@@ -6,3 +9,4 @@ export function twoDecimalPlacesPrice(number) {
   }
   return number;
 }
+
