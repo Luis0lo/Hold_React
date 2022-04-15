@@ -3,30 +3,22 @@ import userShares from '../../libs';
 import SharesInput from './SharesInput';
 import SharesViewer from './SharesViewer';
 import { Container } from '@chakra-ui/react';
-import { twoDecimalPlacesPrice } from '../../helper';
+import { updateHoldings } from '../../helper';
 
 const Holdings = () => {
   const [data, setData] = useState(userShares);
 
-  function addShares(newData) {
-    console.log('newData', newData);
-    const index = data.findIndex((share) => {
-      return share.name.toLowerCase() === newData.name.toLowerCase();
+  function addShares(share) {
+    const index = data.findIndex((holding) => {
+      return holding.name.toLowerCase() === share.name.toLowerCase();
     });
     
     if (index >= 0) {
-      return updateShares(index, newData);
+      const dataUpdated = updateHoldings(data, index, share);
+      setData(dataUpdated)
+      return
     }
-    setData([...data, newData]);
-  }
-
-  function updateShares(index, { quantity, price }) {
-    const numberOfShares = data[index].quantity + quantity;
-    const currentTotal = quantity * price;
-    const sharePrice = twoDecimalPlacesPrice((data[index].total + currentTotal) / numberOfShares);
-    const totalInvested = numberOfShares * sharePrice
-    setData([...data.slice(0, index), {...data[index], price: sharePrice, total: totalInvested, quantity: numberOfShares}, ...data.slice(index + 1)])
-    console.log('here',data)
+    setData([...data, {...share, total: (share.price * share.quantity), currentMarketValueTotal:0}]);
   }
 
   console.log('data edited', data);
