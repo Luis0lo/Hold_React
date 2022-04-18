@@ -4,6 +4,7 @@ import SharesInput from './SharesInput';
 import SharesViewer from './SharesViewer';
 import { Container } from '@chakra-ui/react';
 import { updateHoldings } from '../../helper';
+import BalanceViewer from './BalanceViewer';
 
 const Holdings = () => {
   const [data, setData] = useState(userShares);
@@ -27,6 +28,7 @@ const Holdings = () => {
     <Container maxW="container.xl" my="5">
       <SharesInput addShares={addShares} />
       <SharesViewer data={data} />
+      <BalanceViewer data={data} />
     </Container>
   );
 };

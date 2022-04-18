@@ -18,3 +18,10 @@ export function updateHoldings(data, index, { quantity, price }) {
     const totalInvested = data[index].total + currentTotal
     return [...data.slice(0, index), {...data[index], price: sharePrice, total: totalInvested, quantity: numberOfShares}, ...data.slice(index + 1)]
   }
+
+export function getAllTickers(holdings) {
+  return holdings.map((ticker) => {
+      return ticker.name;
+    })
+    .join(',');
+}
