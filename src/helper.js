@@ -13,7 +13,8 @@
 export function updateHoldings(data, index, { quantity, price }) {
     const numberOfShares = data[index].quantity + quantity;
     const currentTotal = quantity * price;
+    console.log(currentTotal)
     const sharePrice = twoDecimalPlacesPrice((data[index].total + currentTotal) / numberOfShares);
-    const totalInvested = numberOfShares * sharePrice
+    const totalInvested = data[index].total + currentTotal
     return [...data.slice(0, index), {...data[index], price: sharePrice, total: totalInvested, quantity: numberOfShares}, ...data.slice(index + 1)]
   }

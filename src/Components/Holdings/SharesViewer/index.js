@@ -10,7 +10,7 @@ const SharesViewer = ({ data }) => {
             <Th>Share</Th>
             <Th>Units</Th>
             <Th>Price</Th>
-            {/* <Th isNumeric>Invested</Th> */}
+            <Th isNumeric>Invested</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -20,7 +20,7 @@ const SharesViewer = ({ data }) => {
                 <Td>{share.name}</Td>
                 <Td>{share.quantity}</Td>
                 <Td>{share.price}</Td>
-                {/* <Td isNumeric>{share.total}</Td> */}
+                <Td isNumeric>{share.total}</Td>
               </Tr>
             );
           })}

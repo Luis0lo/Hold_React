@@ -1,0 +1,264 @@
+[33mcommit 6e4a0caa7dc1e58defda0613a925c307b71df407[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Fri Apr 15 18:57:21 2022 +0100
+
+    test to updateHoldings func
+
+[33mcommit 19de4fca84d02c5e038997c5a2f9a30e6e4365c6[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Fri Apr 15 17:58:39 2022 +0100
+
+    refactor adding logic into helpers and fix update over new data
+
+[33mcommit 3d5fbcdb74cfc4b7ac07abc58339e75c8256c205[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Fri Apr 15 11:46:24 2022 +0100
+
+    notes about testing
+
+[33mcommit 6535df1c69ae93579d7bcb8667d8e3594964da11[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Fri Apr 15 11:37:36 2022 +0100
+
+    testing helper function
+
+[33mcommit 6740e5435c6b978c721ddbe80677827b67d9b6d7[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Fri Apr 15 10:13:46 2022 +0100
+
+    helper funtion
+
+[33mcommit 2d820abe9c2f91afb1056b0582ef45f245b551fc[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Thu Apr 14 10:53:50 2022 +0100
+
+    display total only with 2 decimals roundend dow - fix
+
+[33mcommit bba0d9fac119cf4364188d82b32acfed09e7a0b3[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Thu Apr 14 10:27:47 2022 +0100
+
+    display total only with 2 decimals roundend dow
+
+[33mcommit f8740d43a0940da51c1788c9a232bf3c65e564bf[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Wed Apr 13 09:22:03 2022 +0100
+
+    input share form error msg and validation refactor
+
+[33mcommit e844d2a0f42f011361818c2af4dce30bb10c21c6[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Tue Apr 12 20:59:57 2022 +0100
+
+    update share 100% - validate form
+
+[33mcommit 3ea53c6fc40ca1167afb2549a7c81073c69a9ede[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Mon Apr 11 18:55:23 2022 +0100
+
+    update shares
+
+[33mcommit 22bd2bba8ca9b4c53baf547257ae9b4ca8ba6329[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Mon Apr 11 18:53:35 2022 +0100
+
+    update shares
+
+[33mcommit e64e66c69472794bc374596b02692b9a79a7335c[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sun Apr 10 17:07:48 2022 +0100
+
+    user can add investments
+
+[33mcommit 8fea215f20cfb99c7e1b1461cf32af186338fb1c[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Thu Mar 24 19:14:20 2022 +0000
+
+    fix
+
+[33mcommit dbb6e43c828fd91836497a68cd00965b38605350[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Thu Mar 24 14:06:42 2022 +0000
+
+    styling, fadeIn
+
+[33mcommit 818771bdbcff84341d9a0c739b18560a3aae041d[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Thu Mar 17 21:33:02 2022 +0000
+
+    conditional rendering
+
+[33mcommit 65b0176c62390e7f6ebf566a7b6f2a4c79773485[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Wed Mar 16 22:38:32 2022 +0000
+
+    prefil input fields on edit
+
+[33mcommit df63c4462f65a7b262c14306a5960d17a516f227[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Tue Feb 15 19:05:56 2022 +0000
+
+    modal
+
+[33mcommit c735c8e700cb87c63741ba52fc5c5bf16da1f731[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Mon Feb 14 20:34:42 2022 +0000
+
+    set for deployment
+
+[33mcommit 3070727cc600679859b12c0580731a7b92902992[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Mon Feb 14 20:32:01 2022 +0000
+
+    set for deployment
+
+[33mcommit 09fe1f63d88eac17518aa55b365df040b793f3a1[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Mon Feb 14 20:27:48 2022 +0000
+
+    random quote component
+
+[33mcommit 6277d5655570cc0ecaae50cc4d08108059c5e86f[m
+Merge: 8204242 29d7d96
+Author: Luis Rodrigues <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sun Feb 13 15:49:11 2022 +0000
+
+    Merge pull request #1 from Luis0lo/liftState
+    
+    Lift state
+
+[33mcommit 29d7d96b0766701a4d228b30f74c193497d8eaff[m[33m ([m[1;31morigin/liftState[m[33m, [m[1;32mliftState[m[33m)[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sun Feb 13 15:46:48 2022 +0000
+
+    trying to prefill form
+
+[33mcommit 5ae8022e7bf75560fa7ca308ca36b10bcd27871c[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sat Feb 12 18:01:28 2022 +0000
+
+    fill form
+
+[33mcommit 82042422f412c577752a8eaa278562519ba00d3d[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Fri Feb 11 13:48:54 2022 +0000
+
+    useEffect applyed to update my quotes state
+
+[33mcommit de019cdd5e926de967480c0ee465ffbce2b9fff3[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sun Feb 6 16:19:15 2022 +0000
+
+    state changing efectively
+
+[33mcommit a0853ba01852226c944cb9a0537eb5c558530106[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sun Feb 6 15:29:08 2022 +0000
+
+    change the state spreading
+
+[33mcommit b2d7749b504272d59562921e1905af839d7e6aef[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sun Feb 6 13:45:43 2022 +0000
+
+    several
+
+[33mcommit 6fa4e3a52c969c5040abb7783f33f95b9dcba4cb[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sat Feb 5 16:51:32 2022 +0000
+
+    styles with chakra
+
+[33mcommit 06e62d1afd34137786572239f09082048794436f[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sat Feb 5 14:06:06 2022 +0000
+
+    Shares Input component
+
+[33mcommit c872161571ac8f54873a88bd8357abd3cd7d762c[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sat Feb 5 10:14:36 2022 +0000
+
+    diagram review
+    
+    I need to delete buttons and create one main component for them
+
+[33mcommit 46562dcc445fc7870f7c9692b3ce8ac4801f1d4c[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sat Feb 5 08:58:15 2022 +0000
+
+    added style to quotes
+
+[33mcommit d3ff2f383cc450fa6a60ff7cd7c4eba38927f7d4[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sat Feb 5 07:36:42 2022 +0000
+
+    set delete state
+
+[33mcommit e07ce4d7af33d953a8491212fa9f53b52582f047[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sat Feb 5 07:03:53 2022 +0000
+
+    fix
+
+[33mcommit b20c6437af47decaa3a7ecc63a2b3e539490e3c9[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Sat Feb 5 06:56:35 2022 +0000
+
+    edit request
+
+[33mcommit 329089c2bd2da860eba89fe1819039511aff4b3d[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Fri Feb 4 07:14:30 2022 +0000
+
+    fix on delete request
+
+[33mcommit 72e30269e274538697eb11e803805a82c0f9bdb5[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Fri Feb 4 07:12:57 2022 +0000
+
+    fix on delete request
+
+[33mcommit 7424548b252ef7101e87deb0ebb21c9f70a4a70d[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Thu Feb 3 22:09:03 2022 +0000
+
+    delete
+
+[33mcommit b79c3d21a2056678e3e8f11793b569181d3cc745[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Thu Feb 3 20:51:27 2022 +0000
+
+    add quote form
+
+[33mcommit f3540339183950a788e5a1e6b53c6f08872b252d[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Thu Feb 3 20:24:36 2022 +0000
+
+    chakra, useform hook
+
+[33mcommit 5ba20d69c3f112bbcf9e40d003fffc6df7081f68[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Thu Feb 3 08:40:34 2022 +0000
+
+    custom hook, useFetch
+
+[33mcommit 68a417e74e25cae44c11fb4eb24bd40638e700ca[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Wed Feb 2 21:43:15 2022 +0000
+
+    console.log delete
+
+[33mcommit a70b8b13f788c6d0c62f7fa21544d560deb4408f[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Wed Feb 2 21:39:30 2022 +0000
+
+    ranking fix
+
+[33mcommit 95ae11a7f0ee05b377baa4c5d584af9c2038e6df[m
+Author: Luis0lo <58235960+Luis0lo@users.noreply.github.com>
+Date:   Wed Feb 2 21:24:20 2022 +0000
+
+    url change
+
+[33mcommit d820a65a2a22a

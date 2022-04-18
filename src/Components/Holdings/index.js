@@ -21,7 +21,7 @@ const Holdings = () => {
     setData([...data, {...share, total: (share.price * share.quantity), currentMarketValueTotal:0}]);
   }
 
-  console.log('data edited', data);
+  
 
   return (
     <Container maxW="container.xl" my="5">
