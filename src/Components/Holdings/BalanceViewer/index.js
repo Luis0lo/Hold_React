@@ -2,14 +2,11 @@ import { Container, Button } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { getAllTickers } from '../../../helper';
 
-const BalanceViewer = ({ data }) => {
+const BalanceViewer = ({ data, setInvestedBalance, setLiveBalance }) => {
   const [prices, setPrices] = useState([
     { ticker: 'TSLA', price: 1002.76 },
     { ticker: 'GOOGL', price: 2551.68 },
   ]);
-  const [investedBalance, setInvestedBalance] = useState(0)
-  const [liveBalance, setLiveBalance] = useState(0)
-
 
   const tickers = getAllTickers(data);
   const key = process.env.REACT_APP_STOCK_API_KEY;
@@ -51,7 +48,6 @@ const BalanceViewer = ({ data }) => {
   function handleBalance() {
     getLiveBalance();
   }
-  console.log(liveBalance, investedBalance)
 
   return (
     <Container my={5}>

@@ -8,6 +8,8 @@ import BalanceViewer from './BalanceViewer';
 
 const Holdings = () => {
   const [data, setData] = useState(userShares);
+  const [investedBalance, setInvestedBalance] = useState(0)
+  const [liveBalance, setLiveBalance] = useState(0)
 
   function addShares(share) {
     const index = data.findIndex((holding) => {
@@ -21,6 +23,7 @@ const Holdings = () => {
     }
     setData([...data, {...share, total: (share.price * share.quantity), currentMarketValueTotal:0}]);
   }
+  console.log(liveBalance, investedBalance)
 
   
 
@@ -28,7 +31,7 @@ const Holdings = () => {
     <Container maxW="container.xl" my="5">
       <SharesInput addShares={addShares} />
       <SharesViewer data={data} />
-      <BalanceViewer data={data} />
+      <BalanceViewer data={data} setInvestedBalance={setInvestedBalance} setLiveBalance={setLiveBalance}/>
     </Container>
   );
 };
