@@ -16,15 +16,15 @@ const BalanceViewer = ({ data }) => {
 
   useEffect(() => {
     async function getRealtimeSharePrices() {
-      // const response = await fetch(`https://api.stockdata.org/v1/data/quote?symbols=${tickers}&api_token=${key}`);
-      // const data = await response.json();
-      // const realtimePrices = data['data'].map((ticker) => {
-      //   return {
-      //     ticker: ticker.ticker,
-      //     price: ticker.price,
-      //   };
-      // });
-      // setPrices(realtimePrices)
+      const response = await fetch(`https://api.stockdata.org/v1/data/quote?symbols=${tickers}&api_token=${key}`);
+      const data = await response.json();
+      const realtimePrices = data['data'].map((ticker) => {
+        return {
+          ticker: ticker.ticker,
+          price: ticker.price,
+        };
+      });
+      setPrices(realtimePrices)
     }
     getRealtimeSharePrices();
   }, [tickers, key]);
