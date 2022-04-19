@@ -5,9 +5,11 @@ import SharesViewer from './SharesViewer';
 import { Container } from '@chakra-ui/react';
 import { updateHoldings } from '../../helper';
 import BalanceViewer from './BalanceViewer';
+import CurrencyInput from './CurrencyInput';
 
 const Holdings = () => {
   const [data, setData] = useState(userShares);
+  const [currency, setCurrrency]=useState(null)
   const [investedBalance, setInvestedBalance] = useState(0)
   const [liveBalance, setLiveBalance] = useState(0)
 
@@ -29,6 +31,7 @@ const Holdings = () => {
 
   return (
     <Container maxW="container.xl" my="5">
+      <CurrencyInput setCurrrency={setCurrrency}/>
       <SharesInput addShares={addShares} />
       <SharesViewer data={data} />
       <BalanceViewer data={data} setInvestedBalance={setInvestedBalance} setLiveBalance={setLiveBalance}/>

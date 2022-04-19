@@ -10,7 +10,7 @@ function App() {
   return (
     <div className={css.App}>
       <h1 className={css.LuisRodrigues}>Luis Rodrigues</h1>
-      <Holdings />
+        <Holdings />
       <div className={css.quotesContainer}>
         <RandomQuote API_URL={API_URL} />
         <Quotes API_URL={API_URL} />
