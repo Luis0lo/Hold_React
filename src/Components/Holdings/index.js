@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import userShares from '../../libs';
 import SharesInput from './SharesInput';
 import SharesViewer from './SharesViewer';
@@ -25,7 +25,7 @@ const Holdings = () => {
     }
     setData([...data, {...share, total: (share.price * share.quantity), currentMarketValueTotal:0}]);
   }
-  console.log(liveBalance, investedBalance)
+  console.log('live', liveBalance, 'invested', investedBalance)
 
   
 
@@ -34,7 +34,7 @@ const Holdings = () => {
       <CurrencyInput setCurrrency={setCurrrency}/>
       <SharesInput addShares={addShares} />
       <SharesViewer data={data} />
-      <BalanceViewer data={data} setInvestedBalance={setInvestedBalance} setLiveBalance={setLiveBalance}/>
+      <BalanceViewer data={data} setInvestedBalance={setInvestedBalance} setLiveBalance={setLiveBalance} currency={currency}/>
     </Container>
   );
 };

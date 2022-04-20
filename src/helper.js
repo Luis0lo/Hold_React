@@ -25,3 +25,4 @@ export function getAllTickers(holdings) {
     })
     .join(',');
 }
+
