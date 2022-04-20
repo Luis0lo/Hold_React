@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import userShares from '../../libs';
 import SharesInput from './SharesInput';
 import SharesViewer from './SharesViewer';
@@ -26,8 +26,6 @@ const Holdings = () => {
     setData([...data, {...share, total: (share.price * share.quantity), currentMarketValueTotal:0}]);
   }
   console.log('live', liveBalance, 'invested', investedBalance)
-
-  
 
   return (
     <Container maxW="container.xl" my="5">
