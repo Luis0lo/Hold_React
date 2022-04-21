@@ -1,4 +1,4 @@
-import { Container, useRadioGroup, HStack } from '@chakra-ui/react';
+import { Container, useRadioGroup, HStack, Center } from '@chakra-ui/react';
 import CurrencyCard from '../CurrencyCard';
 
 const CurrencyInput = ({ setCurrrency }) => {
@@ -13,9 +13,10 @@ const CurrencyInput = ({ setCurrrency }) => {
   const group = getRootProps();
 
   return (
-    <Container my={5}>
-      <p>Select Currency</p>
-      <HStack {...group}>
+    <Container my={5}  p={5}  border='1px' borderRadius="lg" borderColor='gray.200'>
+      <p >Select Currency</p>
+      <Center>
+      <HStack pt={5}   {...group}>
         {options.map((value) => {
           const radio = getRadioProps({ value });
           return (
@@ -25,6 +26,7 @@ const CurrencyInput = ({ setCurrrency }) => {
           );
         })}
       </HStack>
+      </Center>
     </Container>
   );
 };
