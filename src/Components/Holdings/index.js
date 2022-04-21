@@ -1,4 +1,4 @@
-import {createContext, useState} from 'react';
+import { createContext, useState } from 'react';
 import userShares from '../../libs';
 import SharesInput from './SharesInput';
 import SharesViewer from './SharesViewer';
@@ -6,34 +6,54 @@ import { Container } from '@chakra-ui/react';
 import { updateHoldings } from '../../helper';
 import CurrencyInput from './CurrencyInput';
 import Balance from './Balance/Balance';
+import BalanceDisplay from './BalanceDisplay/BalanceDisplay';
 
-export const HoldingContext = createContext()
+export const HoldingContext = createContext();
 
 const Holdings = () => {
   const [data, setData] = useState(userShares);
-  const [currency, setCurrrency]=useState('')
-  const [investedBalance, setInvestedBalance] = useState(0)
-  const [liveBalance, setLiveBalance] = useState(0)
+  const [currency, setCurrrency] = useState('');
+  const [investedBalance, setInvestedBalance] = useState(0);
+  const [liveBalance, setLiveBalance] = useState(0);
+  const [investmentResult, setInvestmentResult] = useState(0);
+
 
   function addShares(share) {
     const index = data.findIndex((holding) => {
       return holding.name.toLowerCase() === share.name.toLowerCase();
     });
-    
+
     if (index >= 0) {
       const dataUpdated = updateHoldings(data, index, share);
-      setData(dataUpdated)
-      return
+      setData(dataUpdated);
+      return;
     }
-    setData([...data, {...share, total: (share.price * share.quantity), currentMarketValueTotal:0}]);
+    setData([
+      ...data,
+      {
+        ...share,
+        total: share.price * share.quantity,
+        currentMarketValueTotal: 0,
+      },
+    ]);
   }
-  console.log('live', liveBalance, 'invested', investedBalance)
 
   return (
-    <HoldingContext.Provider value={{currency}}>
+    <HoldingContext.Provider value={{ currency }}>
       <Container maxW="container.xl" my="5">
-        <CurrencyInput setCurrrency={setCurrrency}/>
-        <Balance data={data} setInvestedBalance={setInvestedBalance} setLiveBalance={setLiveBalance} currency={currency}/>
+        <CurrencyInput setCurrrency={setCurrrency} />
+        <Balance
+          data={data}
+          setInvestedBalance={setInvestedBalance}
+          setLiveBalance={setLiveBalance}
+          setInvestmentResult={setInvestmentResult}
+          currency={currency}
+        />
+        <BalanceDisplay
+          liveBalance={liveBalance}
+          investedBalance={investedBalance}
+          investmentResult={investmentResult}
+        />
         <SharesInput addShares={addShares} />
         <SharesViewer data={data} />
       </Container>

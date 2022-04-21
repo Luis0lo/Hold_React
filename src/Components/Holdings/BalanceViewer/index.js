@@ -7,7 +7,7 @@ const BalanceViewer = ({ handleBalance }) => {
 
   return (
     <Container my={5}>
-      <Button onClick={handleBalance} isDisabled={!currency ? true : false}>Live Balance</Button>
+      <Button onClick={handleBalance}  isDisabled={!currency ? true : false}>Live Balance</Button>
     </Container>
   );
 };
