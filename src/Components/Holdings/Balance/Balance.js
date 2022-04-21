@@ -4,26 +4,26 @@ import BalanceViewer from '../BalanceViewer';
 
 const Balance = ({ data, setInvestmentResult, setInvestedBalance, setLiveBalance, currency }) => {
   const [prices, setPrices] = useState([
-    { ticker: 'TSLA', price: 1002.76 },
-    { ticker: 'GOOGL', price: 2551.68 },
+    // { ticker: 'TSLA', price: 1002.76 },
+    // { ticker: 'GOOGL', price: 2551.68 },
   ]);
 
   const tickers = getAllTickers(data);
   const key = process.env.REACT_APP_STOCK_API_KEY;
 
   useEffect(() => {
-    // async function getRealtimeSharePrices() {
-    //   const response = await fetch(`https://api.stockdata.org/v1/data/quote?symbols=${tickers}&api_token=${key}`);
-    //   const data = await response.json();
-    //   const realtimePrices = data['data'].map((ticker) => {
-    //     return {
-    //       ticker: ticker.ticker,
-    //       price: ticker.price,
-    //     };
-    //   });
-    //   setPrices(realtimePrices)
-    // }
-    // getRealtimeSharePrices();
+    async function getRealtimeSharePrices() {
+      const response = await fetch(`https://api.stockdata.org/v1/data/quote?symbols=${tickers}&api_token=${key}`);
+      const data = await response.json();
+      const realtimePrices = data['data'].map((ticker) => {
+        return {
+          ticker: ticker.ticker,
+          price: ticker.price,
+        };
+      });
+      setPrices(realtimePrices)
+    }
+    getRealtimeSharePrices();
   }, [tickers, key]);
 
   const currencies = ['GBP', 'USD', 'EUR'];
@@ -37,21 +37,21 @@ const Balance = ({ data, setInvestmentResult, setInvestedBalance, setLiveBalance
   }
 
   async function getExchangeRates(baseCurrency) {
-    // const response = await fetch(`${buildExchangeUrl(baseCurrency)}`);
-    // const data = await response.json();
-    // const exchangeRates = data['data'].map((x) => {
-    //   return {
-    //     symbol: x[0]['symbol'].slice(-3),
-    //     price: x[0]['price'],
-    //   };
-    // });
-    // exchangeRates.push({ symbol: baseCurrency, price: 1 });
-    return [
-      { symbol: 'GBP', price: 0.83 },
-      { symbol: 'USD', price: 1.08 },
-      { symbol: 'EUR', price: 1 },
-    ];
-    // return exchangeRates;
+    const response = await fetch(`${buildExchangeUrl(baseCurrency)}`);
+    const data = await response.json();
+    const exchangeRates = data['data'].map((x) => {
+      return {
+        symbol: x[0]['symbol'].slice(-3),
+        price: x[0]['price'],
+      };
+    });
+    exchangeRates.push({ symbol: baseCurrency, price: 1 });
+    return exchangeRates;
+    // return [
+    //   { symbol: 'GBP', price: 0.83 },
+    //   { symbol: 'USD', price: 1.08 },
+    //   { symbol: 'EUR', price: 1 },
+    // ];
   }
 
   async function getConvertedTotals() {

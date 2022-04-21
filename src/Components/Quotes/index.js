@@ -16,7 +16,6 @@ const Quotes = ({ API_URL }) => {
   const [delet, setDelete] = useState(false); //required to trigger the delete request
   const [url, setUrl] = useState('');
   const { data, error, isLoading } = useFetch(url);
-  console.log(data, id);
 
   const [inputFields, setInputFields] = useState(null);
 
@@ -74,7 +73,6 @@ const Quotes = ({ API_URL }) => {
     setRenderSearch(!renderSearch)
     setRenderForm(false)
   }
-  console.log('inputFields state', inputFields)
 
   return (
     <Container mt={5}>
