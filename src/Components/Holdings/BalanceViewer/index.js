@@ -1,12 +1,13 @@
+import { useContext } from 'react';
+import { HoldingContext } from '../../Holdings';
 import { Container, Button } from '@chakra-ui/react';
 
 const BalanceViewer = ({ handleBalance }) => {
-  
+  const { currency } = useContext(HoldingContext);
 
   return (
     <Container my={5}>
-      <p>Balance Viewer</p>
-      <Button onClick={handleBalance}>Live Balance</Button>
+      <Button onClick={handleBalance} isDisabled={!currency ? true : false}>Live Balance</Button>
     </Container>
   );
 };
