@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getAllTickers } from '../../../helper';
 import BalanceViewer from '../BalanceViewer';
 
-const Balance = ({ data, setInvestmentResult, setInvestedBalance, setLiveBalance, currency }) => {
+const Balance = ({ data, setInvestmentResult, setInvestedBalance, setLiveBalance, currency, setHasBalance }) => {
   const [prices, setPrices] = useState([
     // { ticker: 'TSLA', price: 1002.76 },
     // { ticker: 'GOOGL', price: 2551.68 },
@@ -71,6 +71,7 @@ const Balance = ({ data, setInvestmentResult, setInvestedBalance, setLiveBalance
     setLiveBalance(runningCurrentMarketTotal.toFixed(2));
     setInvestedBalance(runningInvestedTotal.toFixed(2));
     setInvestmentResult((runningCurrentMarketTotal - runningInvestedTotal).toFixed(2))
+    setHasBalance(true)
   }
 
   function getLiveBalance() {

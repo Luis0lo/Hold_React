@@ -16,6 +16,8 @@ const Holdings = () => {
   const [investedBalance, setInvestedBalance] = useState(0);
   const [liveBalance, setLiveBalance] = useState(0);
   const [investmentResult, setInvestmentResult] = useState(0);
+  const [hasBalance, setHasBalance] = useState(false);
+
 
 
   function addShares(share) {
@@ -47,12 +49,15 @@ const Holdings = () => {
           setInvestedBalance={setInvestedBalance}
           setLiveBalance={setLiveBalance}
           setInvestmentResult={setInvestmentResult}
+          setHasBalance={setHasBalance}
           currency={currency}
         />
         <BalanceDisplay
           liveBalance={liveBalance}
           investedBalance={investedBalance}
           investmentResult={investmentResult}
+          hasBalance={hasBalance}
+          setHasBalance={setHasBalance}
         />
         <SharesInput addShares={addShares} />
         <SharesViewer data={data} />
