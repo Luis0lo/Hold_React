@@ -1,19 +1,23 @@
 import Quotes from '../Quotes';
 import Holdings from '../Holdings';
-import css from "./App.module.css";
-
+import Home from '../../Pages/Home';
+import About from '../../Pages/About';
+import Navbar from '../Navbar/Navbar';
+import css from './App.module.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
-  const API_URL = process.env.REACT_APP_API_URL;
-
   return (
-    <div className={css.App}>
+    <Router>
       <h1 className={css.LuisRodrigues}>Luis Rodrigues</h1>
-        <Holdings />
-      <div className={css.quotesContainer}>
-        <Quotes API_URL={API_URL} />
-      </div>
-    </div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/holdings" element={<Holdings />} />
+        <Route path="/quotes" element={<Quotes />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   );
 }
 

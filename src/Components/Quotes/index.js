@@ -3,10 +3,12 @@ import SearchQuotes from './SerachQuotes';
 import QuotesForm from './QuotesForm';
 import { Button, Container } from '@chakra-ui/react';
 import useFetch from '../../Hooks/useFetch';
-
 import css from './quotes.module.css';
 
-const Quotes = ({ API_URL }) => {
+const API_URL = process.env.REACT_APP_API_URL;
+
+
+const Quotes = () => {
   // const API_URL = process.env.REACT_APP_API_URL;
   const [renderForm, setRenderForm] = useState(false);
   const [renderSearch, setRenderSearch] = useState(false)

@@ -16,7 +16,9 @@
     "react-fade-in": "^2.0.1",
     "react-hook-form": "^7.25.3",
     "react-rating-stars-component": "^2.2.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
+    "styled-components": "^5.3.5",
     "uuidv4": "^6.2.12",
     "web-vitals": "^2.1.4"
   },
