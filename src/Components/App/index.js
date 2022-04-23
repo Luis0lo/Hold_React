@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <Router>
-      <h1 className={css.LuisRodrigues}>Luis Rodrigues</h1>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
