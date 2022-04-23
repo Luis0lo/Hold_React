@@ -20,7 +20,11 @@ const Navbar = () => {
     <NavbarContainer extendNavbar={extendNavbar}>
       <NavbarInnerContainer>
         <LeftContainer>
+          <Logo src={LogoImg}></Logo>
+        </LeftContainer>
+        <RightContainer>
           <NavbarLinkContainer>
+            <NavbarLink to="/">Home</NavbarLink>
             <NavbarLink to="/holdings">Holdings</NavbarLink>
             <NavbarLink to="/quotes">Quotes</NavbarLink>
             <NavbarLink to="/about">About</NavbarLink>
@@ -32,14 +36,16 @@ const Navbar = () => {
               {extendNavbar ? <>&#10005;</> : <>&#8801;</>}
             </OpenLinksButton>
           </NavbarLinkContainer>
-        </LeftContainer>
-        <RightContainer>
-          <Logo src={LogoImg}></Logo>
         </RightContainer>
       </NavbarInnerContainer>
 
       {extendNavbar && (
-        <NavbarExtendedContainer>
+        <NavbarExtendedContainer
+          onClick={() => {
+            setExtendNavbar((curr) => !curr);
+          }}
+        >
+          <NavbarLinkExtended to="/">Home</NavbarLinkExtended>
           <NavbarLinkExtended to="/holdings">Holdings</NavbarLinkExtended>
           <NavbarLinkExtended to="/quotes">Quotes</NavbarLinkExtended>
           <NavbarLinkExtended to="/about">About</NavbarLinkExtended>

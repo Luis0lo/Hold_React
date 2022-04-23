@@ -15,17 +15,28 @@ export const NavbarContainer = styled.nav`
 `;
 
 export const LeftContainer = styled.div`
-  flex: 70%;
+  flex: 30%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 4%;
+  /* if you swap sides  */
+  /* flex: 70%;
   display: flex;
   align-items: center;
-  padding-left: 5%;
+  padding-left: 5%; */
 `;
 
 export const RightContainer = styled.div`
-  flex: 30%;
+  flex: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5%;
+  /* if you swap sides  */
+  /* flex: 30%;
   display: flex;
   justify-content: flex-end;
-  padding-right: 50px;
+  padding-right: 50px; */
 `;
 
 export const NavbarInnerContainer = styled.div`
@@ -77,8 +88,10 @@ export const OpenLinksButton = styled.button`
 `;
 
 export const NavbarExtendedContainer = styled.div`
+  height: 40vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 
   @media (min-width: 700px) {
