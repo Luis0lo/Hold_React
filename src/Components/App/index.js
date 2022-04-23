@@ -3,7 +3,7 @@ import Holdings from '../Holdings';
 import Home from '../../Pages/Home';
 import About from '../../Pages/About';
 import Navbar from '../Navbar/Navbar';
-import css from './App.module.css';
+// import css from './App.module.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {

@@ -43,7 +43,7 @@ const Quotes = () => {
       setQuotes(data.payload);
     }
     getQuotes();
-  }, [API_URL]);
+  }, []);
 
   useEffect(() => {
     if (!id || delet === false) {
@@ -61,7 +61,7 @@ const Quotes = () => {
     deleteQuote();
     setDelete(false);
     setId('');
-  }, [quotes, API_URL, id, delet]);
+  }, [quotes, id, delet]);
 
   function handleRenderForm(){
     setInputFields({});
