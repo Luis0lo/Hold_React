@@ -9,6 +9,7 @@ import {
   NavbarLink,
   NavbarLinkExtended,
   Logo,
+  Name,
   OpenLinksButton,
 } from './Navbar.style';
 import LogoImg from '../../assets/logo.png';
@@ -21,6 +22,7 @@ const Navbar = () => {
       <NavbarInnerContainer>
         <LeftContainer>
           <Logo src={LogoImg}></Logo>
+          <Name to='/'>Luis Rodrigues</Name>
         </LeftContainer>
         <RightContainer>
           <NavbarLinkContainer>

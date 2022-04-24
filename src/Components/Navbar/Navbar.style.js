@@ -74,6 +74,21 @@ export const Logo = styled.img`
   border-radius: 50%;
 `;
 
+export const Name = styled(Link)`
+  color: white;
+  font-size: x-large;
+  text-decoration: none;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 700px) {
+    max-width: 50px;
+    line-height: 1.5rem;
+  }
+`;
+
 export const OpenLinksButton = styled.button`
   width: 70px;
   background: none;
