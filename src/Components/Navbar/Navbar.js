@@ -22,14 +22,14 @@ const Navbar = () => {
       <NavbarInnerContainer>
         <LeftContainer>
           <Logo src={LogoImg}></Logo>
-          <Name to='/'>Luis Rodrigues</Name>
+          <Name to="/">Luis Rodrigues</Name>
         </LeftContainer>
         <RightContainer>
           <NavbarLinkContainer>
-            <NavbarLink to="/">Home</NavbarLink>
-            <NavbarLink to="/holdings">Holdings</NavbarLink>
-            <NavbarLink to="/quotes">Quotes</NavbarLink>
-            <NavbarLink to="/about">About</NavbarLink>
+            <NavbarLink to="/" activeStyle>Home</NavbarLink>
+            <NavbarLink to="/holdings" activeStyle>Holdings</NavbarLink>
+            <NavbarLink to="/quotes" activeStyle>Quotes</NavbarLink>
+            <NavbarLink to="/about" activeStyle>About</NavbarLink>
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);
