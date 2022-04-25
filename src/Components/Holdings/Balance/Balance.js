@@ -1,3 +1,4 @@
+import { Container } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { getAllTickers } from '../../../helper';
 import BalanceViewer from '../BalanceViewer';
@@ -103,9 +104,9 @@ const Balance = ({ data, setInvestmentResult, setInvestedBalance, setLiveBalance
     }
   }
   return (
-    <>
+    <Container centerContent>
       <BalanceViewer data={data} handleBalance={handleBalance} />
-    </>
+    </Container>
   );
 };
 

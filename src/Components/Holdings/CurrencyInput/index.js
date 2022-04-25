@@ -13,8 +13,8 @@ const CurrencyInput = ({ setCurrrency }) => {
   const group = getRootProps();
 
   return (
-    <Container my={5}  p={5}  border='1px' borderRadius="lg" borderColor='gray.200'>
-      <p >Select Currency</p>
+    <Container centerContent my={5}  p={5}  border='1px' borderRadius="lg" borderColor='gray.200'>
+      <p>Select Currency</p>
       <Center>
       <HStack pt={5}   {...group}>
         {options.map((value) => {

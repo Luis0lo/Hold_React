@@ -7,6 +7,8 @@ import { updateHoldings } from '../../helper';
 import CurrencyInput from './CurrencyInput';
 import Balance from './Balance/Balance';
 import BalanceDisplay from './BalanceDisplay/BalanceDisplay';
+import css from './holdings.module.css';
+
 
 export const HoldingContext = createContext();
 
@@ -42,7 +44,7 @@ const Holdings = () => {
 
   return (
     <HoldingContext.Provider value={{ currency }}>
-      <Container maxW="container.xl" my="5">
+      <Container maxW="container.xl" my="5" >
         <CurrencyInput setCurrrency={setCurrrency} />
         <Balance
           data={data}

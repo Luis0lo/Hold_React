@@ -17,13 +17,12 @@ const QuoteViewer = ({ randQuote }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Container>
-      <Box maxW="lg" borderWidth="1px" borderRadius="lg" overflow="hidden">
-        <Box p="2">
-          <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
-            "{randQuote.quote}"
+    <Container centerContent >
+      {/* <Box bg='blue' maxW="lg" borderWidth="1px" borderRadius="lg" overflow="hidden"> */}
+          <Box  mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
+             <p>"{randQuote.quote}"</p> 
           </Box>
-          <Box mt="2" alignItems="center">
+          <Box m="2" >
             {Array(5)
               .fill('')
               .map((_, i) => (
@@ -33,7 +32,6 @@ const QuoteViewer = ({ randQuote }) => {
                 />
               ))}
           </Box>
-        </Box>
         <Button
           mb="3"
           colorScheme="green"
@@ -43,7 +41,7 @@ const QuoteViewer = ({ randQuote }) => {
         >
           more
         </Button>
-      </Box>
+      {/* </Box> */}
 
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
