@@ -1,4 +1,13 @@
-import { Container, Button } from '@chakra-ui/react';
+import {
+  Container,
+  Button,
+  Table,
+  Thead,
+  Tr,
+  Th,
+  Td,
+  Tbody,
+} from '@chakra-ui/react';
 import RandomQuote from '../../RandomQuote';
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -10,6 +19,18 @@ const BalanceDisplay = ({
   hasBalance,
   setHasBalance,
 }) => {
+  //todo >if investment positive apply style greeb
+  const styledResult =
+    investmentResult > 0 ? (
+      <Th bg="green" color="white">
+        Result
+      </Th>
+    ) : (
+      <Th bg="red" color="white">
+        Result
+      </Th>
+    );
+
   return (
     <Container
       my={5}
@@ -18,14 +39,32 @@ const BalanceDisplay = ({
       borderRadius="lg"
       borderColor="gray.200"
     >
-
       {!hasBalance && <RandomQuote API_URL={API_URL} />}
 
       {hasBalance && (
-        <Container>
-          <p>Invested: {investedBalance}</p>
-          <p>Live: {liveBalance}</p>
-          <p>Result: {investmentResult}</p>
+        <Container maxW="md">
+          <Table
+            size="md"
+            variant="striped"
+            fontSize="large"
+            colorScheme="gray"
+          >
+            <Thead>
+              <Tr>
+                <Th>Invested</Th>
+                <Th>Live</Th>
+                {styledResult}
+              </Tr>
+            </Thead>
+            <Tbody>
+              <Tr>
+                <Td>{investedBalance}</Td>
+                <Td>{liveBalance}</Td>
+                <Td>{investmentResult}</Td>
+              </Tr>
+            </Tbody>
+          </Table>
+
           <Button
             colorScheme="green"
             size="xs"

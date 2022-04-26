@@ -26,10 +26,10 @@ const Navbar = () => {
         </LeftContainer>
         <RightContainer>
           <NavbarLinkContainer>
-            <NavbarLink to="/" activeStyle>Home</NavbarLink>
-            <NavbarLink to="/holdings" activeStyle>Holdings</NavbarLink>
-            <NavbarLink to="/quotes" activeStyle>Quotes</NavbarLink>
-            <NavbarLink to="/about" activeStyle>About</NavbarLink>
+            <NavbarLink to="/" >Home</NavbarLink>
+            <NavbarLink to="/holdings" >Holdings</NavbarLink>
+            <NavbarLink to="/quotes" >Quotes</NavbarLink>
+            <NavbarLink to="/about" >About</NavbarLink>
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);
