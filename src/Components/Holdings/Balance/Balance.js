@@ -60,7 +60,6 @@ const Balance = ({ data, setInvestmentResult, setInvestedBalance, setLiveBalance
     let runningInvestedTotal = 0;
     let runningCurrentMarketTotal = 0;
     data.forEach((share) => {
-      console.log(share);
       let exchangeRate = exchangeRates.find(
         (rate) => rate.symbol === share['currency']
       );

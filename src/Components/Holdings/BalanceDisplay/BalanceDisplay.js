@@ -19,16 +19,18 @@ const BalanceDisplay = ({
   investmentResult,
   hasBalance,
   setHasBalance,
+  currency,
 }) => {
   //todo >if investment positive apply style greeb
+  // const symbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '€';
   const styledResult =
     investmentResult > 0 ? (
       <Th bg="green" color="white">
-        Result
+        Result 
       </Th>
     ) : (
       <Th bg="red" color="white">
-        Result
+        Result 
       </Th>
     );
 
@@ -43,7 +45,7 @@ const BalanceDisplay = ({
       {!hasBalance && <RandomQuote API_URL={API_URL} />}
 
       {hasBalance && (
-        <Container maxW="md" my='5'>
+        <Container maxW="md" my="5">
           <Table
             size="md"
             variant="striped"
@@ -65,7 +67,7 @@ const BalanceDisplay = ({
               </Tr>
             </Tbody>
           </Table>
-          <Box textAlign="center" mt='2'>
+          <Box textAlign="center" mt="2">
             <Button
               colorScheme="green"
               size="xs"

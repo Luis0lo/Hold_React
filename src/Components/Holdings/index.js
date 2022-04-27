@@ -59,6 +59,7 @@ const Holdings = () => {
           investmentResult={investmentResult}
           hasBalance={hasBalance}
           setHasBalance={setHasBalance}
+          currency={currency}
         />
         <SharesInput addShares={addShares} />
         <SharesViewer data={data} />
