@@ -24,6 +24,7 @@ const RandomQuote = ({ API_URL }) => {
       ) : (
         <Container centerContent>
           <Spinner
+            my={5}
             thickness="10px"
             speed="0.65s"
             emptyColor="gray.200"

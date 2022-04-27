@@ -7,6 +7,7 @@ import {
   Th,
   Td,
   Tbody,
+  Box,
 } from '@chakra-ui/react';
 import RandomQuote from '../../RandomQuote';
 
@@ -42,7 +43,7 @@ const BalanceDisplay = ({
       {!hasBalance && <RandomQuote API_URL={API_URL} />}
 
       {hasBalance && (
-        <Container maxW="md">
+        <Container maxW="md" my='5'>
           <Table
             size="md"
             variant="striped"
@@ -64,16 +65,17 @@ const BalanceDisplay = ({
               </Tr>
             </Tbody>
           </Table>
-
-          <Button
-            colorScheme="green"
-            size="xs"
-            mt={2}
-            variant="outline"
-            onClick={() => setHasBalance(false)}
-          >
-            Random Quote
-          </Button>
+          <Box textAlign="center" mt='2'>
+            <Button
+              colorScheme="green"
+              size="xs"
+              mt={2}
+              variant="outline"
+              onClick={() => setHasBalance(false)}
+            >
+              Random Quote
+            </Button>
+          </Box>
         </Container>
       )}
     </Container>
