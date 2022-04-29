@@ -26,7 +26,7 @@ const DisplayQuotes = ({
               </b>
             </em>
             <p>{quote.explanation}</p>
-            <Container my={4} style={{ display: 'flex' }}>
+            <Container my={4} style={{ display: 'flex' }} textAlign='center'>
               <EditQuote setId={setId} quoteId={quote.id} setEdit={setEdit} />
               <p>{'⭐'.repeat(quote.ranking)}</p>
               <DeleteQuote

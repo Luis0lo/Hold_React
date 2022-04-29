@@ -95,14 +95,16 @@ const SharesInput = ({ addShares }) => {
             {errors.currency && errors.currency.message}
           </FormErrorMessage>
         </FormControl>
+        <Container textAlign='right' p={0}>
         <Button
+        
           mt={4}
           colorScheme="teal"
           isLoading={isSubmitting}
           type="submit"
         >
           Add
-        </Button>
+        </Button></Container>
       </form>
     </Container>
   );

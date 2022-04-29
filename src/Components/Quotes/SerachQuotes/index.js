@@ -55,6 +55,7 @@ const SearchQuotes = ({
             <FormLabel mt={4}>By Ranking</FormLabel>
             <Input onChange={handleRanking} type="number" />
           </FormControl>
+          <Container textAlign='right' p={0}>
           <Button
             mt={4}
             colorScheme="teal"
@@ -63,6 +64,7 @@ const SearchQuotes = ({
           >
             Search
           </Button>
+          </Container>
         </form>
 
         <DisplayQuotes
