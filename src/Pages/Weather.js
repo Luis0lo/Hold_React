@@ -1,14 +1,30 @@
+import { useState } from 'react';
+import LocationInput from '../Components/Weather/LocationInput/locationInput';
+
 const Weather = () => {
+  const [location, setLocation] = useState('');
+  console.log(location);
+
+  const searchLocation = () => {
+    console.log(location);
+  };
+
   return (
     <div
       style={{
+        marginTop: '3rem',
         display: 'flex',
-        alignItems: 'center',
+        flexDirection: 'column',
         justifyContent: 'center',
-        height: '80vh',
+        alignItems: 'center',
+        backgroundColor: 'beige',
       }}
     >
-      <p style={{ fontSize: '5rem' }}>Weather</p>
+      <LocationInput
+        location={location}
+        setLocation={setLocation}
+        searchLocation={searchLocation}
+      />
     </div>
   );
 };

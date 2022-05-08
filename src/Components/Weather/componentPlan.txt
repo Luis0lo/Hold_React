@@ -1,0 +1,41 @@
+-weather
+    props
+        - none
+    state
+        - location
+        - weatherData
+        - day
+    behavior    
+        - fetchs the weather and store data required
+    render
+        - input component
+        - weather bar component
+        - weather detail
+
+-locationInput
+    props
+        - location
+    state
+        - none
+    behavior
+        - store location selected by the user
+    render
+        - input field 
+
+- weathernavbar
+    props
+        - location
+        - day
+        - weatherdata
+    state
+        - none
+    behavior
+        - store location selected by the user
+    render
+        - input field
+
+
+
+ 
+
+
