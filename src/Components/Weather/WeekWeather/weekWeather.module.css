@@ -1,0 +1,49 @@
+.weatherContainer {
+  margin: 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.weekWeatherCard {
+  min-width: 22vw;
+  /* max-width: 22vw; */
+  padding: 0.3rem;
+  margin: 0.2rem;
+  background-color: rgb(82, 48, 234);
+  border-radius: 0.5rem;
+}
+
+.dayInfoContainer {
+  border-radius: 0.2rem;
+  background-color: azure;
+  padding: 0.3rem;
+  margin: 0.3rem;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: start;
+}
+
+.dayNumber {
+  font-size: 2rem;
+  padding-right: 0.5rem;
+}
+.dayMonth {
+  text-align: left;
+}
+.weatherInfoContainer {
+  border-radius: 0.2rem;
+  background-color: azure;
+  padding: 0.3rem;
+  margin: 0.3rem;
+  margin-top: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.weatherIcon {
+  font-size: 2rem;
+}
+.weatherTemperature {
+  text-align: left;
+}

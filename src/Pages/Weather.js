@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import LocationInput from '../Components/Weather/LocationInput/locationInput';
 import WeatherNavbar from '../Components/Weather/WeatherNavbar/weatherNavbar';
+import WeekWeather from '../Components/Weather/WeekWeather/weekWeather';
 import moment from 'moment';
 
 const Weather = () => {
@@ -76,6 +77,7 @@ const Weather = () => {
         searchLocation={searchLocation}
       />
       <WeatherNavbar locationDetails={locationDetails} weather={weather} />
+      <WeekWeather weather={weather}/>
     </div>
   );
 };
