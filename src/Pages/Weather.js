@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import LocationInput from '../Components/Weather/LocationInput/locationInput';
-import moment from "moment";
+import WeatherNavbar from '../Components/Weather/WeatherNavbar/weatherNavbar';
+import moment from 'moment';
 
 const Weather = () => {
   const [location, setLocation] = useState(null);
@@ -35,11 +36,11 @@ const Weather = () => {
               windSpeed: day.wind_speed + ' m/s',
               month: moment.unix(daily[i].dt).format('MMMM'),
               day: moment.unix(daily[i].dt).format('Do'),
-              weekDay: moment.unix(daily[i].dt).format('dddd'),
+              weekday: moment.unix(daily[i].dt).format('dddd'),
               feelsLikeAvg: Math.round(day.feels_like.day) + ' °C',
               humidity: Math.round(day.humidity) + ' %',
-              sunrise: moment.unix(day.sunrise).format("H:mm a"),
-              sunset: moment.unix(day.sunset).format("H:mm a"),
+              sunrise: moment.unix(day.sunrise).format('H:mm a'),
+              sunset: moment.unix(day.sunset).format('H:mm a'),
               tempAver: Math.round(day.temp.day) + ' °C',
               tempMax: Math.round(day.temp.max) + ' °C',
               tempMin: Math.round(day.temp.min) + ' °C',
@@ -49,7 +50,7 @@ const Weather = () => {
             },
           ];
         });
-        console.log(weatherInfo);
+        setWeather(weatherInfo);
       } catch (err) {
         console.log(err.message);
       }
@@ -57,7 +58,7 @@ const Weather = () => {
       console.log('nothing yet');
     }
   };
-  console.log(locationDetails);
+  console.log(weather);
   return (
     <div
       style={{
@@ -74,6 +75,7 @@ const Weather = () => {
         setLocation={setLocation}
         searchLocation={searchLocation}
       />
+      <WeatherNavbar locationDetails={locationDetails} weather={weather} />
     </div>
   );
 };
