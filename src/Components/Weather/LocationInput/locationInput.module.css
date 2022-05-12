@@ -1,0 +1,25 @@
+.locationContainer {
+  position: relative;
+  display: flex;
+  margin: 2rem 0;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid rgb(45, 8, 178);
+  border-radius: 5px;
+}
+
+.locationContainer > input {
+  text-align: center;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: larger;
+}
+
+.locationContainer > button {
+  padding-left: 0.4rem;
+}
+
+/* TODO move the icon inside input field */
+/* .locationContainer > button {
+  position: absolute;
+  left: 90%;
+} */

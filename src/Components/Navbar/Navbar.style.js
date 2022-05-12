@@ -9,7 +9,7 @@ export const NavbarContainer = styled.nav`
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 700px) {
+  @media (min-width: 900px) {
     height: 80px;
   }
 `;
@@ -58,7 +58,8 @@ export const NavbarLink = styled(NavLink)`
   padding: 0 15px;
   border: 1px solid rgb(15, 8, 116);
 
-  @media (max-width: 700px) {
+  /* @media (max-width: 700px) { */
+  @media (max-width: 900px) {
     display: none;
   }
 
@@ -98,7 +99,7 @@ export const Name = styled(NavLink)`
   align-items: center;
   flex-wrap: wrap;
 
-  @media (max-width: 700px) {
+  @media (max-width: 1000px) {
     max-width: 50px;
     line-height: 1.5rem;
   }
@@ -112,7 +113,7 @@ export const OpenLinksButton = styled.button`
   font-size: 45px;
   cursor: pointer;
 
-  @media (min-width: 700px) {
+  @media (min-width: 900px) {
     display: none;
   }
 `;
@@ -124,7 +125,7 @@ export const NavbarExtendedContainer = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  @media (min-width: 700px) {
+  @media (min-width: 900px) {
     display: none;
   }
 `;
