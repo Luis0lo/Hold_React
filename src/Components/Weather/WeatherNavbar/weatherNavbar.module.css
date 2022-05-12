@@ -1,15 +1,15 @@
 .weatherNavbarContainer {
   width: 100vw;
-  padding: 0.2rem 1rem;
+  padding: 0.4rem 4rem;
   background-color: rgb(212, 212, 233);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-@media screen and (min-width: 550px) {
+@media screen and (max-width: 450px) {
   .weatherNavbarContainer {
-    padding: 0.2rem 4rem;
+    padding: 0.4rem 2rem;
   }
 }
 

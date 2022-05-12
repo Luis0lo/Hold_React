@@ -3,6 +3,7 @@ const WeekWeather = (props) => {
 const weather = props.weather;
 
   return (
+      
      <div className={css.weatherContainer}>
       {weather.length >0 && 
       weather.map((day, i)=>{

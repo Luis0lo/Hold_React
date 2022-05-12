@@ -63,12 +63,10 @@ const Weather = () => {
   return (
     <div
       style={{
-        marginTop: '3rem',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'beige',
       }}
     >
       <LocationInput
