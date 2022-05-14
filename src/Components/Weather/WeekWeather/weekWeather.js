@@ -1,13 +1,14 @@
 import css from './weekWeather.module.css';
 const WeekWeather = (props) => {
-  const weather = props.weather;
+  const {weather, dayDetails, selectDay} = props;
 
   return (
     <div className={css.weatherContainer}>
-      {weather.length > 0 &&
+      {(weather.length > 0 && dayDetails.length < 1) &&
         weather.map((day, i) => {
           return (
-            <div key={day.day}className={css.weekWeatherCard}>
+            <div key={day.day}className={css.weekWeatherCard}
+            onClick={() => selectDay(day.day)}>
               <div className={css.dayInfoContainer}>
                 <div className={css.dayNumber}>{day.day}</div>
                 <div className={css.dayMonth}>

@@ -12,6 +12,7 @@
   margin: 0.5rem 0.3rem;
   background-color: rgb(82, 48, 234);
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .dayInfoContainer {
@@ -67,5 +68,20 @@
 @media (max-width: 500px) {
   .weekWeatherCard {
     min-width: 80vw;
+    display: flex;
+    justify-content: space-between;
+  }
+  .weatherInfoContainer {
+    margin: 0;
+    border-radius: 0.2rem;
+    max-width: 32vw;
+    flex-grow: 1;
+  }
+  .dayInfoContainer {
+    background-color: transparent;
+    justify-content: start;
+    margin: 0;
+    color: white;
+    flex-grow: 1;
   }
 }

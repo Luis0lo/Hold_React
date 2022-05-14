@@ -9,8 +9,9 @@ const Weather = () => {
   const [location, setLocation] = useState(null);
   const [locationDetails, setlocationDetails] = useState([]);
   const [weather, setWeather] = useState([]);
+  const [dayDetails, setDayDetails] = useState([])
   let weatherInfo = [];
-  console.log(location);
+  // console.log('Location_______',location);
 
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${weatherApiKey}`;
@@ -20,7 +21,7 @@ const Weather = () => {
       try {
         const response1 = await fetch(url);
         const currentDay = await response1.json();
-        console.log(location, currentDay);
+        // console.log(location, currentDay);
         const response2 = await fetch(
           `https://api.openweathermap.org/data/2.5/onecall?lat=${currentDay.coord.lat}&lon=${currentDay.coord.lon}&exclude=minutely&units=metric&appid=${weatherApiKey}`
         );
@@ -30,6 +31,7 @@ const Weather = () => {
           country: currentDay.sys.country,
           id: currentDay.sys.id,
         });
+        // console.log('Response______ ' ,daily);
         daily.forEach((day, i) => {
           weatherInfo = [
             ...weatherInfo,
@@ -51,15 +53,23 @@ const Weather = () => {
             },
           ];
         });
+        setDayDetails([])
         setWeather(weatherInfo);
       } catch (err) {
         console.log(err.message);
       }
     } else {
-      console.log('nothing yet');
+      console.log('');
     }
   };
-  console.log(weather);
+  // console.log('Data stored_______', weather);
+  // console.log('Day Details_______', dayDetails);
+
+  const selectDay = (value) => {
+    const dayDetail = weather.filter(({day}) => day === value);
+    setDayDetails(dayDetail);
+  };
+
   return (
     <div
       style={{
@@ -74,9 +84,9 @@ const Weather = () => {
         setLocation={setLocation}
         searchLocation={searchLocation}
       />
-      <WeatherNavbar locationDetails={locationDetails} weather={weather} />
-      <WeekWeather weather={weather} />
-      <DayWeather weather={weather} />
+      <WeatherNavbar locationDetails={locationDetails} weather={weather} selectDay={selectDay}/>
+      <WeekWeather weather={weather} dayDetails={dayDetails} selectDay={selectDay}/>
+      <DayWeather weather={weather} dayDetails={dayDetails} />
     </div>
   );
 };
