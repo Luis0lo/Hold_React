@@ -2,6 +2,7 @@ import { useState } from 'react';
 import LocationInput from '../Components/Weather/LocationInput/locationInput';
 import WeatherNavbar from '../Components/Weather/WeatherNavbar/weatherNavbar';
 import WeekWeather from '../Components/Weather/WeekWeather/weekWeather';
+import DayWeather from '../Components/Weather/DayWeather/dayWeather';
 import moment from 'moment';
 
 const Weather = () => {
@@ -29,7 +30,6 @@ const Weather = () => {
           country: currentDay.sys.country,
           id: currentDay.sys.id,
         });
-
         daily.forEach((day, i) => {
           weatherInfo = [
             ...weatherInfo,
@@ -75,7 +75,8 @@ const Weather = () => {
         searchLocation={searchLocation}
       />
       <WeatherNavbar locationDetails={locationDetails} weather={weather} />
-      <WeekWeather weather={weather}/>
+      <WeekWeather weather={weather} />
+      <DayWeather weather={weather} />
     </div>
   );
 };

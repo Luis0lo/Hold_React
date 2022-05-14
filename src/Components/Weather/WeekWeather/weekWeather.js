@@ -20,7 +20,7 @@ const WeekWeather = (props) => {
                   <img
                     className="smallcardicon"
                     src={`http://openweathermap.org/img/w/${day.icon}.png`}
-                    alt="weather-icon"
+                    alt={day.weather}
                   />
                 </div>
                 <div className={css.weatherTemperature}>

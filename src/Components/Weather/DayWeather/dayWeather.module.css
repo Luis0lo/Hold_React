@@ -1,0 +1,36 @@
+.dayWeatherContainer {
+  width: 90%;
+}
+
+.weatherDetails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.icon {
+  flex-basis: 16rem;
+  flex-grow: 1;
+}
+.icon > img {
+  display: block;
+  margin: 0 auto;
+}
+.temperature {
+  flex-basis: 16rem;
+  flex-grow: 1;
+}
+.extraDetails {
+  flex-basis: 16rem;
+  flex-grow: 1;
+}
+
+.globalStyle {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid rgb(15, 8, 116);
+  border-radius: 0.2rem;
+}
+.dateHeader {
+  border: none;
+}
