@@ -9,10 +9,10 @@ const WeatherNavbar = ({ selectDay, weather, locationDetails, addFavouriteLocati
     <div className={css.weatherNavbarContainer}>
       <div>
         {locationDetails.city ? <>{locationDetails.city}</> : <>City</>}
-        <button onClick={()=> addFavouriteLocation(locationDetails.city)}>
+        <button onClick={()=> addFavouriteLocation(locationDetails.id)}>
           <BsBookmarkPlus />
         </button>
-        <button onClick={()=> removeFavouriteLocation(locationDetails.city)}>
+        <button onClick={()=> removeFavouriteLocation(locationDetails.id)}>
           <BsBookmarkDash />
         </button>
       </div>

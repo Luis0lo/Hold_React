@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LocationInput from '../Components/Weather/LocationInput/locationInput';
 import WeatherNavbar from '../Components/Weather/WeatherNavbar/weatherNavbar';
 import WeekWeather from '../Components/Weather/WeekWeather/weekWeather';
@@ -11,11 +11,29 @@ const Weather = () => {
   const [locationDetails, setlocationDetails] = useState([]);
   const [weather, setWeather] = useState([]);
   const [dayDetails, setDayDetails] = useState([]);
-  const [favouriteLocations, setFavouriteLocations] = useState([]);
+  const [favouriteLocations, setFavouriteLocations] = useState([2643743 ,3530839]);
+  const [favLocationWeather, setFavLocationWeather] = useState([]);
   let weatherInfo = [];
-  // console.log('Location_______',location);
 
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
+
+  const idsUrl = favouriteLocations.join(',');
+  const urlFavLocations = `https://api.openweathermap.org/data/2.5/group?id=${idsUrl}&units=metric&appid=160cec49564aa8277fc523ac242c7bb0`;
+
+  async function getfavouritesWeather() {
+    console.log('fetching')
+    const response = await fetch(urlFavLocations);
+    const { list } = await response.json();
+     setFavLocationWeather(list);
+  }
+  console.log(favLocationWeather);
+
+  useEffect(() => {
+    if (favouriteLocations.length) {
+      getfavouritesWeather();
+    }
+  }, [favouriteLocations]);
+  
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${weatherApiKey}`;
 
   const searchLocation = async (event) => {
@@ -31,7 +49,7 @@ const Weather = () => {
         setlocationDetails({
           city: currentDay.name,
           country: currentDay.sys.country,
-          id: currentDay.sys.id,
+          id: currentDay.id,
         });
         // console.log('Response______ ' ,daily);
         daily.forEach((day, i) => {
@@ -66,7 +84,7 @@ const Weather = () => {
   };
   // console.log('Data stored_______', weather);
   // console.log('Day Details________', dayDetails);
-  console.log('Day Details________', favouriteLocations);
+  // console.log('Day Details________', favouriteLocations);
 
   const addFavouriteLocation = (location) => {
     if (
@@ -78,6 +96,7 @@ const Weather = () => {
       setFavouriteLocations(locations);
     }
   };
+
   const removeFavouriteLocation = (location) => {
     let index = favouriteLocations.findIndex((x) => x === location);
     if (location && favouriteLocations && index > 0) {
@@ -88,7 +107,7 @@ const Weather = () => {
       setFavouriteLocations(locations);
     }
   };
-  console.log('favouriteLocations', favouriteLocations);
+
   const selectDay = (value) => {
     const dayDetail = weather.filter(({ day }) => day === value);
     setDayDetails(dayDetail);
