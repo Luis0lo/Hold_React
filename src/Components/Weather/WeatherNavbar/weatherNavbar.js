@@ -4,13 +4,16 @@ import {
   BsBookmarkDash,
 } from 'react-icons/bs';
 
-const WeatherNavbar = ({ selectDay, weather, locationDetails }) => {
+const WeatherNavbar = ({ selectDay, weather, locationDetails, addFavouriteLocation, removeFavouriteLocation }) => {
   return (
     <div className={css.weatherNavbarContainer}>
       <div>
         {locationDetails.city ? <>{locationDetails.city}</> : <>City</>}
-        <button>
+        <button onClick={()=> addFavouriteLocation(locationDetails.city)}>
           <BsBookmarkPlus />
+        </button>
+        <button onClick={()=> removeFavouriteLocation(locationDetails.city)}>
+          <BsBookmarkDash />
         </button>
       </div>
       {weather.length ? (

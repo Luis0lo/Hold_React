@@ -10,7 +10,8 @@ const Weather = () => {
   const [location, setLocation] = useState(null);
   const [locationDetails, setlocationDetails] = useState([]);
   const [weather, setWeather] = useState([]);
-  const [dayDetails, setDayDetails] = useState([])
+  const [dayDetails, setDayDetails] = useState([]);
+  const [favouriteLocations, setFavouriteLocations] = useState([]);
   let weatherInfo = [];
   // console.log('Location_______',location);
 
@@ -54,7 +55,7 @@ const Weather = () => {
             },
           ];
         });
-        setDayDetails([])
+        setDayDetails([]);
         setWeather(weatherInfo);
       } catch (err) {
         console.log(err.message);
@@ -64,10 +65,32 @@ const Weather = () => {
     }
   };
   // console.log('Data stored_______', weather);
-  // console.log('Day Details_______', dayDetails);
+  // console.log('Day Details________', dayDetails);
+  console.log('Day Details________', favouriteLocations);
 
+  const addFavouriteLocation = (location) => {
+    if (
+      location &&
+      favouriteLocations.length < 3 &&
+      !favouriteLocations.includes(location)
+    ) {
+      const locations = [...favouriteLocations, location];
+      setFavouriteLocations(locations);
+    }
+  };
+  const removeFavouriteLocation = (location) => {
+    let index = favouriteLocations.findIndex((x) => x === location);
+    if (location && favouriteLocations && index > 0) {
+      const locations = [
+        ...favouriteLocations.slice(0, index),
+        ...favouriteLocations.slice(index + 1),
+      ];
+      setFavouriteLocations(locations);
+    }
+  };
+  console.log('favouriteLocations', favouriteLocations);
   const selectDay = (value) => {
-    const dayDetail = weather.filter(({day}) => day === value);
+    const dayDetail = weather.filter(({ day }) => day === value);
     setDayDetails(dayDetail);
   };
 
@@ -85,9 +108,19 @@ const Weather = () => {
         setLocation={setLocation}
         searchLocation={searchLocation}
       />
-      <FavouriteLocations/>
-      <WeatherNavbar locationDetails={locationDetails} weather={weather} selectDay={selectDay}/>
-      <WeekWeather weather={weather} dayDetails={dayDetails} selectDay={selectDay}/>
+      <FavouriteLocations />
+      <WeatherNavbar
+        locationDetails={locationDetails}
+        weather={weather}
+        selectDay={selectDay}
+        addFavouriteLocation={addFavouriteLocation}
+        removeFavouriteLocation={removeFavouriteLocation}
+      />
+      <WeekWeather
+        weather={weather}
+        dayDetails={dayDetails}
+        selectDay={selectDay}
+      />
       <DayWeather weather={weather} dayDetails={dayDetails} />
     </div>
   );
