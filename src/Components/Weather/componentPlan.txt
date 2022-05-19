@@ -3,10 +3,13 @@
         - none
     state
         - location
-        - weatherData
-        - day
+        - locationDetails
+        - favouriteLocations
+        - weather //weather week data
+        - dayDetails
     behavior    
         - fetchs the weather and store data required
+        - filters specific day from data to show individualy 
     render
         - input component
         - weather bar component
@@ -34,7 +37,27 @@
     render
         - input field
         
+- weekWeather
+    props
+        - weather
+        - dayDetails
+        - selectDay
+    state
+        - none
+    behavior
+        - when any day is selected user will trigger a dayWeather component
+    render
+        - 8 card each with the day weather basic info
 
+- favouriteLocations
+    props
+        - favouriteLocations
+    state
+        - none
+    behavior
+        - when clicked will automaticaly fetch the weekweather for the location
+    render
+        - Locations and basic info for the current day
 
 
  

@@ -1,0 +1,22 @@
+.favouritesMainContainer {
+  display: flex;
+  padding: 0.3rem;
+  margin-bottom: 1rem;
+  border-radius: 0.2rem;
+  background-color: rgb(15, 8, 116);
+}
+.favouritesInnerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.2rem 0.3rem;
+  margin: 0 0.2rem;
+  background-color: rgb(240, 255, 255);
+  border-radius: 0.2rem;
+}
+.favouritesInnerContainer > div:first-of-type {
+  padding-right: 0.5rem;
+}
+.temperature {
+  font-size: small;
+}

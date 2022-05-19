@@ -4,6 +4,7 @@ import WeatherNavbar from '../Components/Weather/WeatherNavbar/weatherNavbar';
 import WeekWeather from '../Components/Weather/WeekWeather/weekWeather';
 import DayWeather from '../Components/Weather/DayWeather/dayWeather';
 import moment from 'moment';
+import FavouriteLocations from '../Components/Weather/FavouriteLocations/favouriteLocations';
 
 const Weather = () => {
   const [location, setLocation] = useState(null);
@@ -84,6 +85,7 @@ const Weather = () => {
         setLocation={setLocation}
         searchLocation={searchLocation}
       />
+      <FavouriteLocations/>
       <WeatherNavbar locationDetails={locationDetails} weather={weather} selectDay={selectDay}/>
       <WeekWeather weather={weather} dayDetails={dayDetails} selectDay={selectDay}/>
       <DayWeather weather={weather} dayDetails={dayDetails} />
