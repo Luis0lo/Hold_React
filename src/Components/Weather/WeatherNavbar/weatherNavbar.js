@@ -1,10 +1,17 @@
 import css from './weatherNavbar.module.css';
+import {
+  BsBookmarkPlus,
+  BsBookmarkDash,
+} from 'react-icons/bs';
 
 const WeatherNavbar = ({ selectDay, weather, locationDetails }) => {
   return (
     <div className={css.weatherNavbarContainer}>
       <div>
         {locationDetails.city ? <>{locationDetails.city}</> : <>City</>}
+        <button>
+          <BsBookmarkPlus />
+        </button>
       </div>
       {weather.length ? (
         <div>
