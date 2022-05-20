@@ -7,6 +7,15 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+.weatherNavbarContainer > div:first-of-type {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.weatherNavbarContainer > div:first-of-type button {
+  padding-left: 0.5rem;
+}
+
 @media screen and (max-width: 450px) {
   .weatherNavbarContainer {
     padding: 0.4rem 2rem;

@@ -13,6 +13,7 @@
   margin: 0 0.2rem;
   background-color: rgb(240, 255, 255);
   border-radius: 0.2rem;
+  cursor: pointer;
 }
 .favouritesInnerContainer > div:first-of-type {
   padding-right: 0.5rem;
