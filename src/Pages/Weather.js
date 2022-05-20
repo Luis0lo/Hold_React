@@ -20,30 +20,31 @@ const Weather = () => {
   const idsUrl = favouriteLocations.join(',');
   const urlFavLocations = `https://api.openweathermap.org/data/2.5/group?id=${idsUrl}&units=metric&appid=${weatherApiKey}`;
 
-  async function getfavouritesWeather() {
-    try {
-      const response = await fetch(urlFavLocations);
-      const { list } = await response.json();
-      let newList = [];
-      list.forEach((location) => {
-        newList = [
-          ...newList,
-          {
-            city: location.name,
-            feels: Math.floor(location.main.feels_like),
-            maxTemp: Math.floor(location.main.temp_max),
-            minTemp: Math.floor(location.main.temp_min),
-            icon: location.weather[0].icon,
-          },
-        ];
-      });
-      setFavLocationWeather(newList);
-    } catch (err) {
-      console.log('favoutires', err.message);
-    }
-  }
+  
 
   useEffect(() => {
+    async function getfavouritesWeather() {
+      try {
+        const response = await fetch(urlFavLocations);
+        const { list } = await response.json();
+        let newList = [];
+        list.forEach((location) => {
+          newList = [
+            ...newList,
+            {
+              city: location.name,
+              feels: Math.floor(location.main.feels_like),
+              maxTemp: Math.floor(location.main.temp_max),
+              minTemp: Math.floor(location.main.temp_min),
+              icon: location.weather[0].icon,
+            },
+          ];
+        });
+        setFavLocationWeather(newList);
+      } catch (err) {
+        console.log('favoutires', err.message);
+      }
+    }
     if (favouriteLocations.length) {
       getfavouritesWeather();
     }
