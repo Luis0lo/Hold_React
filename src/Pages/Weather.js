@@ -16,13 +16,12 @@ const Weather = () => {
   let weatherInfo = [];
 
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
-
-  const idsUrl = favouriteLocations.join(',');
-  const urlFavLocations = `https://api.openweathermap.org/data/2.5/group?id=${idsUrl}&units=metric&appid=${weatherApiKey}`;
-
   
-
   useEffect(() => {
+
+    const idsUrl = favouriteLocations.join(',');
+    const urlFavLocations = `https://api.openweathermap.org/data/2.5/group?id=${idsUrl}&units=metric&appid=${weatherApiKey}`;
+
     async function getfavouritesWeather() {
       try {
         const response = await fetch(urlFavLocations);
@@ -48,7 +47,7 @@ const Weather = () => {
     if (favouriteLocations.length) {
       getfavouritesWeather();
     }
-  }, [favouriteLocations]);
+  }, [favouriteLocations, weatherApiKey]);
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${weatherApiKey}`;
 
