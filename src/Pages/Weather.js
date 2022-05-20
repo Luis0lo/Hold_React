@@ -13,12 +13,10 @@ const Weather = () => {
   const [dayDetails, setDayDetails] = useState([]);
   const [favouriteLocations, setFavouriteLocations] = useState([]);
   const [favLocationWeather, setFavLocationWeather] = useState([]);
-  let weatherInfo = [];
 
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
-  
-  useEffect(() => {
 
+  useEffect(() => {
     const idsUrl = favouriteLocations.join(',');
     const urlFavLocations = `https://api.openweathermap.org/data/2.5/group?id=${idsUrl}&units=metric&appid=${weatherApiKey}`;
 
@@ -49,55 +47,56 @@ const Weather = () => {
     }
   }, [favouriteLocations, weatherApiKey]);
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${weatherApiKey}`;
-
-  const searchLocation = async (event) => {
-    try {
-      const response1 = await fetch(url);
-      const currentDay = await response1.json();
-      // console.log(location, currentDay);
-      const response2 = await fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${currentDay.coord.lat}&lon=${currentDay.coord.lon}&exclude=minutely&units=metric&appid=${weatherApiKey}`
-      );
-      const { daily } = await response2.json();
-      setlocationDetails({
-        city: currentDay.name,
-        country: currentDay.sys.country,
-        id: currentDay.id,
-      });
-      // console.log('Response______ ' ,daily);
-      daily.forEach((day, i) => {
-        weatherInfo = [
-          ...weatherInfo,
-          {
-            windSpeed: day.wind_speed + ' m/s',
-            month: moment.unix(daily[i].dt).format('MMMM'),
-            day: moment.unix(daily[i].dt).format('Do'),
-            weekday: moment.unix(daily[i].dt).format('dddd'),
-            feelsLikeAvg: Math.round(day.feels_like.day) + ' °C',
-            humidity: Math.round(day.humidity) + ' %',
-            sunrise: moment.unix(day.sunrise).format('H:mm a'),
-            sunset: moment.unix(day.sunset).format('H:mm a'),
-            tempAver: Math.round(day.temp.day) + ' °C',
-            tempMax: Math.round(day.temp.max) + ' °C',
-            tempMin: Math.round(day.temp.min) + ' °C',
-            weather: day.weather[0].main,
-            weatherDescription: day.weather[0].description,
-            icon: day.weather[0].icon,
-          },
-        ];
-      });
-      setDayDetails([]);
-      setWeather(weatherInfo);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
   useEffect(() => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${weatherApiKey}`;
+    let weatherInfo = [];
+
+    const searchLocation = async (event) => {
+      try {
+        const response1 = await fetch(url);
+        const currentDay = await response1.json();
+        // console.log(location, currentDay);
+        const response2 = await fetch(
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${currentDay.coord.lat}&lon=${currentDay.coord.lon}&exclude=minutely&units=metric&appid=${weatherApiKey}`
+        );
+        const { daily } = await response2.json();
+        setlocationDetails({
+          city: currentDay.name,
+          country: currentDay.sys.country,
+          id: currentDay.id,
+        });
+        // console.log('Response______ ' ,daily);
+        daily.forEach((day, i) => {
+          weatherInfo = [
+            ...weatherInfo,
+            {
+              windSpeed: day.wind_speed + ' m/s',
+              month: moment.unix(daily[i].dt).format('MMMM'),
+              day: moment.unix(daily[i].dt).format('Do'),
+              weekday: moment.unix(daily[i].dt).format('dddd'),
+              feelsLikeAvg: Math.round(day.feels_like.day) + ' °C',
+              humidity: Math.round(day.humidity) + ' %',
+              sunrise: moment.unix(day.sunrise).format('H:mm a'),
+              sunset: moment.unix(day.sunset).format('H:mm a'),
+              tempAver: Math.round(day.temp.day) + ' °C',
+              tempMax: Math.round(day.temp.max) + ' °C',
+              tempMin: Math.round(day.temp.min) + ' °C',
+              weather: day.weather[0].main,
+              weatherDescription: day.weather[0].description,
+              icon: day.weather[0].icon,
+            },
+          ];
+        });
+        setDayDetails([]);
+        setWeather(weatherInfo);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
     if (location) {
       searchLocation();
     }
-  }, [location]);
+  }, [location, weatherApiKey]);
   // console.log('Data stored_______', weather);
   // console.log('Day Details________', dayDetails);
   // console.log('Day Details________', favouriteLocations);
@@ -138,15 +137,10 @@ const Weather = () => {
         alignItems: 'center',
       }}
     >
-      <LocationInput
-        location={location}
-        setLocation={setLocation}
-        searchLocation={searchLocation}
-      />
+      <LocationInput location={location} setLocation={setLocation} />
       <FavouriteLocations
         favLocationWeather={favLocationWeather}
         favouriteLocations={favouriteLocations}
-        searchLocation={searchLocation}
         setLocation={setLocation}
       />
       <WeatherNavbar
