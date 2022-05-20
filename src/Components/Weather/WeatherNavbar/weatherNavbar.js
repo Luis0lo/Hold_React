@@ -1,20 +1,32 @@
 import css from './weatherNavbar.module.css';
-import {
-  BsBookmarkPlus,
-  BsBookmarkDash,
-} from 'react-icons/bs';
+import { BsBookmarkPlus, BsBookmarkDash } from 'react-icons/bs';
 
-const WeatherNavbar = ({ selectDay, weather, locationDetails, addFavouriteLocation, removeFavouriteLocation }) => {
+const WeatherNavbar = ({
+  selectDay,
+  weather,
+  locationDetails,
+  addFavouriteLocation,
+  removeFavouriteLocation,
+  favouriteLocations,
+}) => {
+  const addButton = (
+    <button onClick={() => addFavouriteLocation(locationDetails.id)}>
+      <BsBookmarkPlus />
+    </button>
+  );
+  const removeButton = (
+    <button onClick={() => removeFavouriteLocation(locationDetails.id)}>
+      <BsBookmarkDash />
+    </button>
+  );
+
   return (
     <div className={css.weatherNavbarContainer}>
       <div>
-        {locationDetails.city ? <>{locationDetails.city}</> : <>City</>}
-        <button onClick={()=> addFavouriteLocation(locationDetails.id)}>
-          <BsBookmarkPlus />
-        </button>
-        <button onClick={()=> removeFavouriteLocation(locationDetails.id)}>
-          <BsBookmarkDash />
-        </button>
+        {locationDetails.city ? <b>{locationDetails.city}</b> : <>City</>}
+        {locationDetails.id &&
+          !favouriteLocations.includes(locationDetails.id) && <>{addButton}</>}
+        {favouriteLocations.includes(locationDetails.id) && <>{removeButton}</>}
       </div>
       {weather.length ? (
         <div>
