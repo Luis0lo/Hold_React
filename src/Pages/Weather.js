@@ -13,8 +13,14 @@ const Weather = () => {
   const [dayDetails, setDayDetails] = useState([]);
   const [favouriteLocations, setFavouriteLocations] = useState([]);
   const [favLocationWeather, setFavLocationWeather] = useState([]);
-
+  
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
+  
+  useEffect(()=>{
+    const favLocations = JSON.parse(localStorage.getItem("favouriteLocations"))
+    setFavouriteLocations(favLocations)
+  }, [])
+
 
   useEffect(() => {
     const idsUrl = favouriteLocations.join(',');
@@ -108,6 +114,7 @@ const Weather = () => {
       !favouriteLocations.includes(location)
     ) {
       const locations = [...favouriteLocations, location];
+      localStorage.setItem('favouriteLocations', JSON.stringify(locations))
       setFavouriteLocations(locations);
     }
   };
@@ -120,6 +127,7 @@ const Weather = () => {
         ...favouriteLocations.slice(0, index),
         ...favouriteLocations.slice(index + 1),
       ];
+      localStorage.setItem('favouriteLocations', JSON.stringify(locations))
       setFavouriteLocations(locations);
     }
   };
