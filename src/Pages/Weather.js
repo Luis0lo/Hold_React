@@ -4,7 +4,7 @@ import WeatherNavbar from '../Components/Weather/WeatherNavbar/weatherNavbar';
 import WeekWeather from '../Components/Weather/WeekWeather/weekWeather';
 import DayWeather from '../Components/Weather/DayWeather/dayWeather';
 import FavouriteLocations from '../Components/Weather/FavouriteLocations/favouriteLocations';
-// import Geolocation from '../Components/GeoLocation/geolocation';
+import Geolocation from '../Components/Geolocation/geolocation';
 import moment from 'moment';
 
 const Weather = () => {
@@ -171,7 +171,7 @@ const Weather = () => {
         dayDetails={dayDetails}
         selectDay={selectDay}
       />
-      {/* <Geolocation /> */}
+      <Geolocation />
       <DayWeather weather={weather} dayDetails={dayDetails} />
     </div>
   );
