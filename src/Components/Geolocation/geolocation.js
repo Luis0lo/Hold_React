@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-const mapApiKey = process.env.REACT_APP_MAP_API_KEY
+import Map from './map';
 
 const Geolocation = () => {
   const [coords, setCoords] = useState('');
@@ -23,7 +22,8 @@ const Geolocation = () => {
   return (
     <div>
       <h1>coords</h1>
-            <p>{coords}</p>
+        <p>{coords}</p>
+        <Map/>
     </div>
   );
 };
