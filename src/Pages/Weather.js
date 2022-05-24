@@ -17,7 +17,7 @@ const Weather = () => {
   const [favLocationWeather, setFavLocationWeather] = useState([]);
 
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
-  // console.log(favouriteLocations);
+  const hereApiKey = process.env.REACT_APP_HERE_API_KEY;
 
   useEffect(() => {
     const favLocations = JSON.parse(localStorage.getItem('favouriteLocations'));
@@ -25,6 +25,21 @@ const Weather = () => {
       setFavouriteLocations(favLocations);
     }
   }, []);
+
+  if (locationDetails.length === 0 && coords) {
+    const url = `https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json?prox=${coords.lat},${coords.lon}&mode=retrieveAddresses&maxresults=1&gen=9&apiKey=${hereApiKey}`;
+    const getCityFromCoordinates = async () => {
+      try{
+      const response = await fetch(url);
+      const data = await response.json();
+      const city = data.Response.View[0].Result[0].Location.Address.City;
+      setlocationDetails({ city });
+      }catch(err){
+        console.log('Reverse Geolocation______', err.message)
+      }
+    };
+    getCityFromCoordinates();
+  }
 
   useEffect(() => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${weatherApiKey}`;
