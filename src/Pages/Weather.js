@@ -4,20 +4,20 @@ import WeatherNavbar from '../Components/Weather/WeatherNavbar/weatherNavbar';
 import WeekWeather from '../Components/Weather/WeekWeather/weekWeather';
 import DayWeather from '../Components/Weather/DayWeather/dayWeather';
 import FavouriteLocations from '../Components/Weather/FavouriteLocations/favouriteLocations';
-// import Geolocation from '../Components/GeoLocation/geolocation';
+import Geolocation from '../Components/Geolocation/geolocation';
 import moment from 'moment';
 
 const Weather = () => {
   const [location, setLocation] = useState(null);
+  const [coords, setCoords] = useState(null);
   const [locationDetails, setlocationDetails] = useState([]);
   const [weather, setWeather] = useState([]);
   const [dayDetails, setDayDetails] = useState([]);
   const [favouriteLocations, setFavouriteLocations] = useState([]);
-  // 2643123
   const [favLocationWeather, setFavLocationWeather] = useState([]);
 
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
-  console.log(favouriteLocations);
+  // console.log(favouriteLocations);
 
   useEffect(() => {
     const favLocations = JSON.parse(localStorage.getItem('favouriteLocations'));
@@ -27,7 +27,29 @@ const Weather = () => {
   }, []);
 
   useEffect(() => {
-    if (favouriteLocations.length >= 0) {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${weatherApiKey}`;
+
+    const searchLocation = async () => {
+      try {
+        const response1 = await fetch(url);
+        const currentDay = await response1.json();
+        setCoords({ lat: currentDay.coord.lat, lon: currentDay.coord.lon });
+        setlocationDetails({
+          city: currentDay.name,
+          country: currentDay.sys.country,
+          id: currentDay.id,
+        });
+      } catch (err) {
+        console.log('Search Location______', err.message);
+      }
+    };
+    if (location) {
+      searchLocation();
+    }
+  }, [location, weatherApiKey]);
+
+  useEffect(() => {
+    if (favouriteLocations.length > 0) {
       const idsUrl = favouriteLocations.join(',');
       const urlFavLocations = `https://api.openweathermap.org/data/2.5/group?id=${idsUrl}&units=metric&appid=${weatherApiKey}`;
 
@@ -50,7 +72,7 @@ const Weather = () => {
           });
           setFavLocationWeather(newList);
         } catch (err) {
-          console.log('favoutires', err.message);
+          console.log('Favourite Locations_____', err.message);
         }
       }
 
@@ -59,25 +81,15 @@ const Weather = () => {
   }, [favouriteLocations, weatherApiKey]);
 
   useEffect(() => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${weatherApiKey}`;
     let weatherInfo = [];
 
     const searchLocation = async (event) => {
       try {
-        const response1 = await fetch(url);
-        const currentDay = await response1.json();
-        console.log(currentDay);
-        // console.log(location, currentDay);
-        const response2 = await fetch(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${currentDay.coord.lat}&lon=${currentDay.coord.lon}&exclude=minutely&units=metric&appid=${weatherApiKey}`
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=minutely&units=metric&appid=${weatherApiKey}`
         );
-        const { daily } = await response2.json();
-        setlocationDetails({
-          city: currentDay.name,
-          country: currentDay.sys.country,
-          id: currentDay.id,
-        });
-        // console.log('Response______ ' ,daily);
+        const { daily } = await response.json();
+
         daily.forEach((day, i) => {
           weatherInfo = [
             ...weatherInfo,
@@ -105,16 +117,15 @@ const Weather = () => {
         console.log(err.message);
       }
     };
-    if (location) {
+    if (coords) {
       searchLocation();
     }
-  }, [location, weatherApiKey]);
+  }, [coords, weatherApiKey]);
   // console.log('Data stored_______', weather);
   // console.log('Day Details________', dayDetails);
   // console.log('Day Details________', favouriteLocations);
 
   const addFavouriteLocation = (location) => {
-    console.log('what is going on', favouriteLocations);
     if (
       location &&
       favouriteLocations.length < 3 &&
@@ -128,7 +139,6 @@ const Weather = () => {
 
   const removeFavouriteLocation = (location) => {
     let index = favouriteLocations.findIndex((x) => x === location);
-    console.log(index);
     if (location && favouriteLocations && index >= 0) {
       const locations = [
         ...favouriteLocations.slice(0, index),
@@ -171,8 +181,8 @@ const Weather = () => {
         dayDetails={dayDetails}
         selectDay={selectDay}
       />
-      {/* <Geolocation /> */}
       <DayWeather weather={weather} dayDetails={dayDetails} />
+      <Geolocation coords={coords} setCoords={setCoords} location={location} />
     </div>
   );
 };
