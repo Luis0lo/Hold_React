@@ -1,0 +1,13 @@
+.chartContainer {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    border-radius: 1rem;
+  background-color: rgba(184, 216, 250, 0.277);
+  width: 70vw;
+}
+.chartContainer > p{
+    text-align: center;
+    font-style: italic;
+    font-weight: 700;
+}
+/* TODO, mobile chart styling */

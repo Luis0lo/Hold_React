@@ -1,4 +1,5 @@
 import css from './weekWeather.module.css';
+import WeatherChart from '../Chart/weatherChart';
 const WeekWeather = (props) => {
   const {weather, dayDetails, selectDay} = props;
 
@@ -32,6 +33,7 @@ const WeekWeather = (props) => {
             </div>
           );
         })}
+        {dayDetails.length === 0 && <WeatherChart weather={weather}/>}
     </div>
   );
 };
