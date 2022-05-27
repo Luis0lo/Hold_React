@@ -8,7 +8,6 @@ import CurrencyInput from './CurrencyInput';
 import Balance from './Balance/Balance';
 import BalanceDisplay from './BalanceDisplay/BalanceDisplay';
 
-
 export const HoldingContext = createContext();
 
 const Holdings = () => {
@@ -18,8 +17,6 @@ const Holdings = () => {
   const [liveBalance, setLiveBalance] = useState(0);
   const [investmentResult, setInvestmentResult] = useState(0);
   const [hasBalance, setHasBalance] = useState(false);
-
-
 
   function addShares(share) {
     const index = data.findIndex((holding) => {
@@ -43,7 +40,10 @@ const Holdings = () => {
 
   return (
     <HoldingContext.Provider value={{ currency }}>
-      <Container maxW="container.xl" my="5" >
+      <Container maxW="container.xl" my="5">
+        <p style={{ textAlign: 'center' }}>
+          Track your investments and check your current live balance.
+        </p>
         <CurrencyInput setCurrrency={setCurrrency} />
         <Balance
           data={data}

@@ -78,6 +78,8 @@ const Quotes = () => {
 
   return (
     <Container mt={5}>
+      <p>Add or search motivational financial quotes promoting long term investments. </p>
+      <br />
       <div className={css.quotesContainer}>
         <div className={css.titleContainer}>
           <h1>Quotes</h1>

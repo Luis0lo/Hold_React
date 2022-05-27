@@ -103,8 +103,8 @@ const Weather = () => {
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=minutely&units=metric&appid=${weatherApiKey}`
         );
-        const { daily } = await response.json();
-
+        const { hourly, daily } = await response.json();
+console.log(hourly)
         daily.forEach((day, i) => {
           weatherInfo = [
             ...weatherInfo,
