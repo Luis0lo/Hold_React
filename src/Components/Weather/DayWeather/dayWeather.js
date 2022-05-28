@@ -1,6 +1,7 @@
 import css from './dayWeather.module.css';
+import HourlyChart from '../Chart/hourlyChart';
 
-const DayWeather = ({ dayDetails }) => {
+const DayWeather = ({ dayDetails, hourlyWeather }) => {
   return (
     <>
       {dayDetails.length > 0 && (
@@ -30,6 +31,7 @@ const DayWeather = ({ dayDetails }) => {
               <p>Sunset {dayDetails[0].sunset}</p>
             </div>
           </div>
+          <HourlyChart />
         </div>
       )}
     </>

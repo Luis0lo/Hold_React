@@ -12,6 +12,7 @@ const Weather = () => {
   const [coords, setCoords] = useState(null);
   const [locationDetails, setlocationDetails] = useState([]);
   const [weather, setWeather] = useState([]);
+  const [hourlyWeather, setHourlyWeather] = useState([]);
   const [dayDetails, setDayDetails] = useState([]);
   const [favouriteLocations, setFavouriteLocations] = useState([]);
   const [favLocationWeather, setFavLocationWeather] = useState([]);
@@ -29,13 +30,13 @@ const Weather = () => {
   if (locationDetails.length === 0 && coords) {
     const url = `https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json?prox=${coords.lat},${coords.lon}&mode=retrieveAddresses&maxresults=1&gen=9&apiKey=${hereApiKey}`;
     const getCityFromCoordinates = async () => {
-      try{
-      const response = await fetch(url);
-      const data = await response.json();
-      const city = data.Response.View[0].Result[0].Location.Address.City;
-      setlocationDetails({ city });
-      }catch(err){
-        console.log('Reverse Geolocation______', err.message)
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const city = data.Response.View[0].Result[0].Location.Address.City;
+        setlocationDetails({ city });
+      } catch (err) {
+        console.log('Reverse Geolocation______', err.message);
       }
     };
     getCityFromCoordinates();
@@ -104,7 +105,6 @@ const Weather = () => {
           `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=minutely&units=metric&appid=${weatherApiKey}`
         );
         const { hourly, daily } = await response.json();
-console.log(hourly)
         daily.forEach((day, i) => {
           weatherInfo = [
             ...weatherInfo,
@@ -126,8 +126,16 @@ console.log(hourly)
             },
           ];
         });
+        const weatherByHour = hourly.map((hours) => {
+          return {
+            hour: moment.unix(hours.dt).format('H:mm a'),
+            feelsLike: hours.feels_like,
+          };
+        });
+        // console.log(weatherByHour);
         setDayDetails([]);
         setWeather(weatherInfo);
+        setHourlyWeather(weatherByHour);
       } catch (err) {
         console.log(err.message);
       }
@@ -196,7 +204,7 @@ console.log(hourly)
         dayDetails={dayDetails}
         selectDay={selectDay}
       />
-      <DayWeather weather={weather} dayDetails={dayDetails} />
+      <DayWeather weather={weather} dayDetails={dayDetails} hourlyWeather={hourlyWeather}/>
       <Geolocation coords={coords} setCoords={setCoords} location={location} />
     </div>
   );
