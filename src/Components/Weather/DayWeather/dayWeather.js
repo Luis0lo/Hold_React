@@ -2,6 +2,12 @@ import css from './dayWeather.module.css';
 import HourlyChart from '../Chart/hourlyChart';
 
 const DayWeather = ({ dayDetails, hourlyWeather }) => {
+let forecastIndexDay = 0
+
+if (dayDetails.length > 0){
+  forecastIndexDay = dayDetails[0].indexDay
+}
+
   return (
     <>
       {dayDetails.length > 0 && (
@@ -31,7 +37,7 @@ const DayWeather = ({ dayDetails, hourlyWeather }) => {
               <p>Sunset {dayDetails[0].sunset}</p>
             </div>
           </div>
-          <HourlyChart />
+          {forecastIndexDay < 2 && <HourlyChart hourlyWeather={hourlyWeather} forecastIndexDay={forecastIndexDay}/> }
         </div>
       )}
     </>

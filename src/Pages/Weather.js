@@ -128,11 +128,11 @@ const Weather = () => {
         });
         const weatherByHour = hourly.map((hours) => {
           return {
-            hour: moment.unix(hours.dt).format('H:mm a'),
+            hour: moment.unix(hours.dt).format('H') + 'h',
             feelsLike: hours.feels_like,
           };
         });
-        // console.log(weatherByHour);
+
         setDayDetails([]);
         setWeather(weatherInfo);
         setHourlyWeather(weatherByHour);
@@ -173,9 +173,14 @@ const Weather = () => {
   };
 
   const selectDay = (value) => {
-    const dayDetail = weather.filter(({ day }) => day === value);
-    setDayDetails(dayDetail);
+    // const dayDetail = weather.filter(({ day }, i) => day === value);
+    weather.forEach((dayWeather, indexDay) => {
+      if (dayWeather.day === value) {
+            setDayDetails([{ ...dayWeather, indexDay }]);
+          }
+    })
   };
+
   return (
     <div
       style={{
@@ -204,7 +209,11 @@ const Weather = () => {
         dayDetails={dayDetails}
         selectDay={selectDay}
       />
-      <DayWeather weather={weather} dayDetails={dayDetails} hourlyWeather={hourlyWeather}/>
+      <DayWeather
+        weather={weather}
+        dayDetails={dayDetails}
+        hourlyWeather={hourlyWeather}
+      />
       <Geolocation coords={coords} setCoords={setCoords} location={location} />
     </div>
   );
