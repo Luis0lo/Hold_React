@@ -7,18 +7,22 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-const HourlyChart = ({ hourlyWeather, forecastIndexDay }) => {
-  const currentDayWeather = hourlyWeather.slice(0, 24);
-  const tomorrowWeather = hourlyWeather.slice(24);
+import css from './weatherChart.module.css';
 
+const HourlyChart = ({ hourlyWeather, data }) => {
   return (
-    <div>
-      <p>Hourly Chart New Feauture</p>
+    <div className={css.hourlyChartContainer}>
+      <p>
+        Next 24h Hours Forecast{' '}
+        <i>
+          <b>fells</b>
+        </i>
+      </p>
       <ResponsiveContainer width="100%" height="100%" aspect={3}>
         <AreaChart
           width={500}
           height={400}
-          data={currentDayWeather}
+          data={data}
           margin={{
             top: 10,
             right: 30,
@@ -26,6 +30,12 @@ const HourlyChart = ({ hourlyWeather, forecastIndexDay }) => {
             bottom: 0,
           }}
         >
+          <defs>
+            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#FF3F00" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+            </linearGradient>
+          </defs>
           <CartesianGrid strokeDasharray="1" vertical="" horizontal="true" />
           <XAxis dataKey="hour" />
           <YAxis />
@@ -33,9 +43,17 @@ const HourlyChart = ({ hourlyWeather, forecastIndexDay }) => {
           <Area
             type="monotone"
             dataKey="feelsLike"
+            stroke="#8884d8"
+            fillOpacity={1}
+            fill="url(#colorUv)"
+          />
+
+          {/* <Area
+            type="monotone"
+            dataKey="feelsLike"
             stroke="#FF3F00"
             fill="#8884d8"
-          />
+          /> */}
         </AreaChart>
       </ResponsiveContainer>
     </div>

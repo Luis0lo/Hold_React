@@ -3,10 +3,15 @@ import HourlyChart from '../Chart/hourlyChart';
 
 const DayWeather = ({ dayDetails, hourlyWeather }) => {
 let forecastIndexDay = 0
+let currentDayWeather, tomorrowWeather ={}
 
 if (dayDetails.length > 0){
   forecastIndexDay = dayDetails[0].indexDay
+  currentDayWeather = hourlyWeather.slice(0, 24);
+  tomorrowWeather = hourlyWeather.slice(24);
 }
+
+
 
   return (
     <>
@@ -37,7 +42,8 @@ if (dayDetails.length > 0){
               <p>Sunset {dayDetails[0].sunset}</p>
             </div>
           </div>
-          {forecastIndexDay < 2 && <HourlyChart hourlyWeather={hourlyWeather} forecastIndexDay={forecastIndexDay}/> }
+          {forecastIndexDay === 0 && <HourlyChart hourlyWeather={hourlyWeather} data={currentDayWeather}/> }
+          {forecastIndexDay === 1 && <HourlyChart hourlyWeather={hourlyWeather} data={tomorrowWeather}/> }
         </div>
       )}
     </>

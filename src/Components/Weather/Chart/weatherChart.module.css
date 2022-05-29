@@ -10,4 +10,12 @@
     font-style: italic;
     font-weight: 700;
 }
+
+.hourlyChartContainer {
+  margin: 3rem 0;
+}
+
+.hourlyChartContainer > p{
+  text-align: center;
+}
 /* TODO, mobile chart styling */
