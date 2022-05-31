@@ -5,6 +5,7 @@ import WeekWeather from '../Components/Weather/WeekWeather/weekWeather';
 import DayWeather from '../Components/Weather/DayWeather/dayWeather';
 import FavouriteLocations from '../Components/Weather/FavouriteLocations/favouriteLocations';
 import Geolocation from '../Components/Geolocation/geolocation';
+import HistoricWeather from '../Components/Weather/HistoricWeather/historicweather';
 import moment from 'moment';
 
 const Weather = () => {
@@ -215,6 +216,7 @@ const Weather = () => {
         hourlyWeather={hourlyWeather}
       />
       <Geolocation coords={coords} setCoords={setCoords} location={location} />
+      <HistoricWeather/>
     </div>
   );
 };
