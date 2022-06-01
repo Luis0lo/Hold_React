@@ -3,6 +3,7 @@ import CalendarInput from './calendarInput';
 
 const HistoricWeather = () => {
   const [birthdayInfo, setBirthdayInfo] = useState(null);
+  const [birthdayWeatherData, setBirthdayWeatherData] = useState(null)
 
   const getHistoricData = useCallback(async () => {
     const historicApiKey = process.env.REACT_APP_HISTORIC_WEATHER_API;
@@ -11,12 +12,13 @@ const HistoricWeather = () => {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
+        setBirthdayWeatherData(data);
       } catch (err) {
         console.log(err.message);
       }
     }
   }, [birthdayInfo]);
+console.log(birthdayWeatherData)
 
   useEffect(() => {
     getHistoricData();
@@ -40,3 +42,5 @@ const HistoricWeather = () => {
 };
 
 export default HistoricWeather;
+
+// https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/caracas/1989-08-28/1989-08-28?unitGroup=metric&key=${apiKey}&contentType=json
