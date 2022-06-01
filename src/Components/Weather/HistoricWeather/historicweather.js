@@ -42,5 +42,6 @@ console.log(birthdayWeatherData)
 };
 
 export default HistoricWeather;
+// https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/caracas/1989-08-28/1989-08-28?unitGroup=metric&include=hours&key=YOUR_API_KEY&contentType=json
 
 // https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/caracas/1989-08-28/1989-08-28?unitGroup=metric&key=${apiKey}&contentType=json
