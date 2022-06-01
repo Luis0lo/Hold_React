@@ -177,9 +177,9 @@ const Weather = () => {
     // const dayDetail = weather.filter(({ day }, i) => day === value);
     weather.forEach((dayWeather, indexDay) => {
       if (dayWeather.day === value) {
-            setDayDetails([{ ...dayWeather, indexDay }]);
-          }
-    })
+        setDayDetails([{ ...dayWeather, indexDay }]);
+      }
+    });
   };
 
   return (
@@ -192,6 +192,8 @@ const Weather = () => {
       }}
     >
       <LocationInput location={location} setLocation={setLocation} />
+      <HistoricWeather />
+
       <FavouriteLocations
         favLocationWeather={favLocationWeather}
         favouriteLocations={favouriteLocations}
@@ -216,7 +218,6 @@ const Weather = () => {
         hourlyWeather={hourlyWeather}
       />
       <Geolocation coords={coords} setCoords={setCoords} location={location} />
-      <HistoricWeather/>
     </div>
   );
 };
