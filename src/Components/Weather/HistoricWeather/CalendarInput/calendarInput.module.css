@@ -1,0 +1,19 @@
+.styles {
+  border: 1px solid grey;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
+}
+.styles + button {
+  font-weight: 600;
+  border-color: #0f0874;
+  background-color: #0f0874;
+  color: white;
+  padding: 0.2rem 0.5rem;
+}
+
+.styles + button:hover {
+  border-color: #0f0874;
+  background-color: white;
+  color: #0f0874;
+}
