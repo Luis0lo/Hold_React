@@ -4,7 +4,8 @@ import { BsFillSunriseFill, BsThermometerHalf } from 'react-icons/bs';
 
 const DisplayBirthWeather = ({ birthdayWeatherData }) => {
   const weather = birthdayWeatherData.days[0];
-  console.log(birthdayWeatherData);
+  // console.log(birthdayWeatherData);
+  
   return (
     <div>
       <p>{birthdayWeatherData.resolvedAddress}</p>

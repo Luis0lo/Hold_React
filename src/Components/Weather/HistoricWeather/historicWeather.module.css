@@ -1,14 +1,15 @@
 .historicWeatherOuterContainer {
   margin: 0.5rem 0 1.5rem 0;
   text-align: center;
-  border: 1px solid;
+  /* border: 1px solid; */
   border-radius: 0.3rem;
   padding: 0.5rem;
 }
 
-@media (max-width: 500px) {
+@media (min-width: 700px) {
   .historicWeatherOuterContainer {
-    border: none;
+    max-width: 50%;
+    margin: 0.5rem auto;
   }
 }
 

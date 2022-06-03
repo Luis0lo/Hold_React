@@ -1,0 +1,11 @@
+ .mainContainer{
+     margin: auto;
+     /* display: flex;
+     justify-content: space-between; */
+}
+/*
+@media (min-width: 700px) {
+  .mainContainer {
+    max-width: 50%;
+  }
+} */

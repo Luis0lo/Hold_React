@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import LocationInput from '../Components/Weather/LocationInput/locationInput';
 import WeatherNavbar from '../Components/Weather/WeatherNavbar/weatherNavbar';
 import WeekWeather from '../Components/Weather/WeekWeather/weekWeather';
 import DayWeather from '../Components/Weather/DayWeather/dayWeather';
 import FavouriteLocations from '../Components/Weather/FavouriteLocations/favouriteLocations';
 import Geolocation from '../Components/Geolocation/geolocation';
-import HistoricWeather from '../Components/Weather/HistoricWeather/historicweather';
+import css from './weather.module.css';
 import moment from 'moment';
 
 const Weather = () => {
@@ -183,16 +184,14 @@ const Weather = () => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
+    <div className={css.mainContainer}>
+      <div className={css.linkToHistoricalWeather}>
+        <Link to="/weather/BirthdayWeather">
+          <p>👶 Click here and discover the weather in your Birthday! 👶🏽</p>{' '}
+        </Link>
+      </div>
+
       <LocationInput location={location} setLocation={setLocation} />
-      <HistoricWeather />
 
       <FavouriteLocations
         favLocationWeather={favLocationWeather}

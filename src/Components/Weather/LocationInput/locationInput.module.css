@@ -1,7 +1,7 @@
 .locationContainer {
   position: relative;
   display: flex;
-  margin: 2rem 0;
+  margin: 3rem 0 1.5rem 0;
   padding: 0.2rem 0.7rem;
   border: 1px solid rgb(45, 8, 178);
   border-radius: 5px;
@@ -16,6 +16,12 @@
 
 .locationContainer > button {
   padding-left: 0.4rem;
+}
+
+@media (max-width: 500px) {
+  .locationContainer {
+    margin: 4.5rem 0 1.5rem 0;
+  }
 }
 
 /* TODO move the icon inside input field */

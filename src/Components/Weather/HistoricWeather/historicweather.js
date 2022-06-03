@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import CalendarInput from './CalendarInput/calendarInput';
 import DisplayBirthWeather from './displayBirthWeather';
 import css from './historicWeather.module.css'
+
+
 const HistoricWeather = () => {
   const [birthdayInfo, setBirthdayInfo] = useState(null);
   const [birthdayWeatherData, setBirthdayWeatherData] = useState(null)
@@ -27,9 +29,7 @@ const HistoricWeather = () => {
   }, [getHistoricData]);
 
   return (
-    <div className={css.historicWeatherOuterContainer}
-      
-    >
+    <div className={css.historicWeatherOuterContainer}>
       <p>How was the weather like in your birthday</p>
       <CalendarInput setBirthdayInfo={setBirthdayInfo} />
       {birthdayWeatherData && <DisplayBirthWeather birthdayWeatherData={birthdayWeatherData}/>}

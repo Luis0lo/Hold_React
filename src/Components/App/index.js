@@ -4,6 +4,7 @@ import Home from '../../Pages/Home';
 import About from '../../Pages/About';
 import Navbar from '../Navbar/Navbar';
 import Weather from '../../Pages/Weather';
+import HistoricalWeather from '../../Pages/HistoricalWeather';
 import ErrorMessage from '../../Pages/Error';
 // import css from './App.module.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -18,6 +19,7 @@ function App() {
         <Route path="/quotes" element={<Quotes />} />
         <Route path="/about" element={<About />} />
         <Route path="/weather" element={<Weather />} />
+        <Route path="/weather/BirthdayWeather" element={<HistoricalWeather />} />
         <Route path="*" element={<ErrorMessage />} />
       </Routes>
     </Router>
