@@ -1,0 +1,14 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.linkToHistoricalWeather {
+  position: absolute;
+  top: 0;
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding-top: 0.2rem;
+}

@@ -1,0 +1,16 @@
+.mainContainer {
+  margin: auto;
+  min-height: calc(100vh - 80px) ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../../public/assets/Birthday-img-bg/landscape.jpg);
+  /* display: flex;
+     justify-content: space-between; */
+}
+/*
+@media (min-width: 700px) {
+  .mainContainer {
+    max-width: 50%;
+  }
+} */

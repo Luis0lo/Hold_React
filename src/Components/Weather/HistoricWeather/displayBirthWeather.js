@@ -1,13 +1,16 @@
-import css from './historicWeather.module.css';
+import css from './displayBirthWeather.module.css';
 import { GiSunset } from 'react-icons/gi';
 import { BsFillSunriseFill, BsThermometerHalf } from 'react-icons/bs';
 
 const DisplayBirthWeather = ({ birthdayWeatherData }) => {
   const weather = birthdayWeatherData.days[0];
-  console.log(birthdayWeatherData);
+  // console.log(birthdayWeatherData);
+
   return (
     <div>
-      <p>{birthdayWeatherData.resolvedAddress}</p>
+      <div className={css.birthPlace}>
+        <p>{birthdayWeatherData.resolvedAddress}</p>
+      </div>
       <div className={css.birthdayWeatherInnerContainer}>
         <div className={css.temperature}>
           <div>
