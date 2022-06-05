@@ -17,6 +17,8 @@ const HistoricWeather = () => {
         // setBirthdayInfo(null);
         setBirthdayWeatherData(data);
       } catch (err) {
+        setBirthdayInfo(null);
+        alert("Sorry, we couldn't find any result, try again!");
         console.log(err.message);
       }
     }
