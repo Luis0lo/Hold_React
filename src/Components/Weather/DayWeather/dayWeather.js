@@ -2,16 +2,16 @@ import css from './dayWeather.module.css';
 import HourlyChart from '../Chart/hourlyChart';
 
 const DayWeather = ({ dayDetails, hourlyWeather }) => {
-let forecastIndexDay = 0
-let currentDayWeather, tomorrowWeather ={}
+  let forecastIndexDay = 0;
+  let currentDayWeather,
+    tomorrowWeather = {};
 
-if (dayDetails.length > 0){
-  forecastIndexDay = dayDetails[0].indexDay
-  currentDayWeather = hourlyWeather.slice(0, 24);
-  tomorrowWeather = hourlyWeather.slice(24);
-}
-
-
+  if (dayDetails.length > 0) {
+    forecastIndexDay = dayDetails[0].indexDay;
+    currentDayWeather = hourlyWeather.slice(0, 24);
+    const midNight = hourlyWeather.findIndex(({ hour }) => hour === '0h');
+    tomorrowWeather = hourlyWeather.slice(midNight, midNight + 25);
+  }
 
   return (
     <>
@@ -42,8 +42,15 @@ if (dayDetails.length > 0){
               <p>Sunset {dayDetails[0].sunset}</p>
             </div>
           </div>
-          {forecastIndexDay === 0 && <HourlyChart hourlyWeather={hourlyWeather} data={currentDayWeather}/> }
-          {forecastIndexDay === 1 && <HourlyChart hourlyWeather={hourlyWeather} data={tomorrowWeather}/> }
+          {forecastIndexDay === 0 && (
+            <HourlyChart
+              hourlyWeather={hourlyWeather}
+              data={currentDayWeather}
+            />
+          )}
+          {forecastIndexDay === 1 && (
+            <HourlyChart hourlyWeather={hourlyWeather} data={tomorrowWeather} />
+          )}
         </div>
       )}
     </>
