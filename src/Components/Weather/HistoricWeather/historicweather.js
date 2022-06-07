@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import ErrorModal from '../ErrorModal/ErrorModal';
 import CalendarInput from './CalendarInput/calendarInput';
 import DisplayBirthWeather from './displayBirthWeather';
 import css from './historicWeather.module.css';
@@ -6,6 +7,7 @@ import css from './historicWeather.module.css';
 const HistoricWeather = () => {
   const [birthdayInfo, setBirthdayInfo] = useState(null);
   const [birthdayWeatherData, setBirthdayWeatherData] = useState(null);
+  const [error, setError] = useState(false);
 
   const getHistoricData = useCallback(async () => {
     const historicApiKey = process.env.REACT_APP_HISTORIC_WEATHER_API;
@@ -18,7 +20,11 @@ const HistoricWeather = () => {
         setBirthdayWeatherData(data);
       } catch (err) {
         setBirthdayInfo(null);
-        alert("Sorry, we couldn't find any result, try again!");
+        setError({
+          title: 'No Data Found',
+          message:
+            'There is no data available for the year or city you are looking for.',
+        });
         console.log(err.message);
       }
     }
@@ -28,34 +34,49 @@ const HistoricWeather = () => {
     getHistoricData();
   }, [getHistoricData]);
 
-  return (
-    <div className={css.historicWeatherOuterContainer}>
-      {!birthdayInfo && (
-        <div className={css.callToActionInput}>
-          <p>How was the weather like in your birthday</p>
-        </div>
-      )}
-      {!birthdayInfo && <CalendarInput setBirthdayInfo={setBirthdayInfo} />}
-      {birthdayWeatherData && (
-        <DisplayBirthWeather birthdayWeatherData={birthdayWeatherData} />
-      )}
+  const errorHandler = () => {
+    setError(null);
+  };
 
-      {!birthdayInfo && (
-        <div className={css.articleInfo}>
-          <p>
-            Humans constantly experience and react to ambient temperature.
-            Because temperature varies markedly across the world, it is
-            conceivable that temperature shapes the fundamental dimensions of
-            personality by affecting the habitual behaviours that underlie
-            personality traits.
-          </p>
-          <p>
-            Temperature may shape personality directly by influencing individual
-            behaviours (for example, exploring outdoors versus staying indoors)
-          </p>
-        </div>
+  return (
+    <>
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
       )}
-    </div>
+      <div className={css.historicWeatherOuterContainer}>
+        {!birthdayInfo && (
+          <div className={css.callToActionInput}>
+            <p>How was the weather like in your birthday</p>
+          </div>
+        )}
+        {!birthdayInfo && <CalendarInput setBirthdayInfo={setBirthdayInfo} />}
+        {birthdayWeatherData && (
+          <DisplayBirthWeather birthdayWeatherData={birthdayWeatherData} />
+        )}
+
+        {!birthdayInfo && (
+          <div className={css.articleInfo}>
+            <p>
+              Humans constantly experience and react to ambient temperature.
+              Because temperature varies markedly across the world, it is
+              conceivable that temperature shapes the fundamental dimensions of
+              personality by affecting the habitual behaviours that underlie
+              personality traits.
+            </p>
+            <br />
+            <p>
+              Temperature may shape personality directly by influencing
+              individual behaviours (for example, exploring outdoors versus
+              staying indoors)
+            </p>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
