@@ -17,7 +17,9 @@ const HistoricWeather = () => {
         const response = await fetch(url);
         const data = await response.json();
         // setBirthdayInfo(null);
-        setBirthdayWeatherData(data);
+        if (data) {
+          setBirthdayWeatherData(data);
+        }
       } catch (err) {
         setBirthdayInfo(null);
         setError({
