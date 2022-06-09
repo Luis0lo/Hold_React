@@ -13,7 +13,7 @@ import LoginPage from '../../Pages/Login';
 // import css from './App.module.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PrivateRoute from '../Authentication/PrivateRoute';
-
+import ForgotPasswordPage from '../../Pages/ForgotPasswordPage';
 function App() {
   return (
     <AuthProvider>
@@ -31,6 +31,10 @@ function App() {
           />
           <Route path="/signup" element={<SignupPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
+          <Route
+            path="/forgot-password"
+            element={<ForgotPasswordPage />}
+          ></Route>
           <Route
             path="/dashboard"
             element={
