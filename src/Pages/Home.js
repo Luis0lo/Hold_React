@@ -1,16 +1,17 @@
 import React from 'react';
-import Signup from '../Components/Authentication/Signup';
-import { Container } from 'react-bootstrap';
+
 const Home = () => {
   return (
-    <Container
-      className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: '80vh' }}
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '80vh',
+      }}
     >
-      <div className="w-100" style={{ maxWidth: '400px' }}>
-        <Signup />
-      </div>
-    </Container>
+      <p style={{ fontSize: '5rem' }}>171.0.0.1</p>
+    </div>
   );
 };
 
