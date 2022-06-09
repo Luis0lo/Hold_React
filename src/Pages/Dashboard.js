@@ -34,6 +34,7 @@ const Dashboard = () => {
           </Link>
         </Card.Body>
       </Card>
+      
       <div className="w-100 text-center mt-2" style={{ maxWidth: '400px' }}>
         <Button variant="link" onClick={handleLogout}>
           Log Out

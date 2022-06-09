@@ -14,6 +14,7 @@ import LoginPage from '../../Pages/Login';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PrivateRoute from '../Authentication/PrivateRoute';
 import ForgotPasswordPage from '../../Pages/ForgotPasswordPage';
+import UpdateProfile from '../../Pages/UpdateProfile';
 function App() {
   return (
     <AuthProvider>
@@ -42,7 +43,15 @@ function App() {
                 <Dashboard />
               </PrivateRoute>
             }
-          ></Route>{' '}
+          ></Route>
+          <Route
+            path="/update-profile"
+            element={
+              <PrivateRoute>
+                <UpdateProfile />
+              </PrivateRoute>
+            }
+          ></Route>
           <Route path="*" element={<ErrorMessage />} />
         </Routes>
       </Router>
