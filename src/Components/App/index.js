@@ -9,9 +9,10 @@ import ErrorMessage from '../../Pages/Error';
 import { AuthProvider } from '../Context/AuthContext';
 import SignupPage from '../../Pages/Signup';
 import Dashboard from '../../Pages/Dashboard';
-import LoginPage from '../../Pages/Login'
+import LoginPage from '../../Pages/Login';
 // import css from './App.module.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import PrivateRoute from '../Authentication/PrivateRoute';
 
 function App() {
   return (
@@ -30,7 +31,14 @@ function App() {
           />
           <Route path="/signup" element={<SignupPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          ></Route>{' '}
           <Route path="*" element={<ErrorMessage />} />
         </Routes>
       </Router>
