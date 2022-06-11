@@ -46,6 +46,7 @@ const Login = () => {
               Log In
             </Button>
           </Form>
+          
           <div className="w-100 text-center mt-2">
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
