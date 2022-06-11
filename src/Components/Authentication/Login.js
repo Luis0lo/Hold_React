@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  const { login, signInWithGoogle } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -18,7 +18,11 @@ const Login = () => {
     try {
       setError('');
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      if (emailRef.current.value) {
+        await login(emailRef.current.value, passwordRef.current.value);
+      } else {
+        await signInWithGoogle();
+      }
       navigate('/dashboard');
     } catch {
       setError('Failed to sign in');
@@ -46,7 +50,14 @@ const Login = () => {
               Log In
             </Button>
           </Form>
-          
+          <Button
+            disabled={loading}
+            onClick={handleSubmit}
+            className="w-100 mt-3"
+            type="submit"
+          >
+            google
+          </Button>
           <div className="w-100 text-center mt-2">
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
