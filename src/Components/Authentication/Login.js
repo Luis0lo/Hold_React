@@ -54,9 +54,10 @@ const Login = () => {
             disabled={loading}
             onClick={handleSubmit}
             className="w-100 mt-3"
+            style={{ backgroundColor: '#D64937', borderColor: '#D64937' }}
             type="submit"
           >
-            google
+            Log in with Google
           </Button>
           <div className="w-100 text-center mt-2">
             <Link to="/forgot-password">Forgot Password?</Link>
