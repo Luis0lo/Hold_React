@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { AiOutlineLogin, AiOutlineLogout } from 'react-icons/ai';
 
 export const NavbarContainer = styled.nav`
   width: 100%;
@@ -19,6 +20,7 @@ export const LeftContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   padding-left: 4%;
+  position: relative;
   /* if you swap sides  */
   /* flex: 70%;
   display: flex;
@@ -94,7 +96,7 @@ export const Name = styled(NavLink)`
   color: white;
   font-size: x-large;
   text-decoration: none;
-  margin: 10px;
+  padding: 10px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -103,6 +105,13 @@ export const Name = styled(NavLink)`
     max-width: 50px;
     line-height: 1.5rem;
   }
+`;
+
+export const Logs = styled(NavLink)`
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 `;
 
 export const OpenLinksButton = styled.button`
@@ -128,4 +137,14 @@ export const NavbarExtendedContainer = styled.div`
   @media (min-width: 900px) {
     display: none;
   }
+`;
+
+export const LoginIcon = styled(AiOutlineLogin)`
+  color: greenyellow;
+  font-size: 2rem;
+`;
+
+export const LogoutIcon = styled(AiOutlineLogout)`
+  color: orange;
+  font-size: 2rem;
 `;

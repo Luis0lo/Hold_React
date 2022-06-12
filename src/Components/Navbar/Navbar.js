@@ -11,11 +11,16 @@ import {
   Logo,
   Name,
   OpenLinksButton,
+  Logs,
+  LoginIcon,
+  LogoutIcon,
 } from './Navbar.style';
 import LogoImg from '../../assets/logo.png';
+import { useAuth } from '../Context/AuthContext';
 
 const Navbar = () => {
   const [extendNavbar, setExtendNavbar] = useState(false);
+  const { currentUser, logout } = useAuth();
 
   return (
     <NavbarContainer extendNavbar={extendNavbar}>
@@ -23,6 +28,20 @@ const Navbar = () => {
         <LeftContainer>
           <Logo src={LogoImg}></Logo>
           <Name to="/">Luis Rodrigues</Name>
+          {!currentUser && (
+            <Logs to="/login">
+              <LoginIcon />
+            </Logs>
+          )}
+          {currentUser && (
+            <Logs to="/">
+              <LogoutIcon
+                onClick={() => {
+                  logout();
+                }}
+              />
+            </Logs>
+          )}
         </LeftContainer>
         <RightContainer>
           <NavbarLinkContainer>
