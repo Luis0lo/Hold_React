@@ -15,6 +15,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PrivateRoute from '../Authentication/PrivateRoute';
 import ForgotPasswordPage from '../../Pages/ForgotPasswordPage';
 import UpdateProfile from '../../Pages/UpdateProfile';
+import GainLosses from '../Holdings/GainLosses/GainLosses';
 function App() {
   return (
     <AuthProvider>
@@ -23,6 +24,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/holdings" element={<Holdings />} />
+          <Route
+            path="/holdings/gain-losses"
+            element={<GainLosses />}
+          />
           <Route path="/quotes" element={<Quotes />} />
           <Route path="/about" element={<About />} />
           <Route path="/weather" element={<Weather />} />

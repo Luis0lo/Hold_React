@@ -24,7 +24,8 @@ const Login = () => {
         await signInWithGoogle();
       }
       navigate('/dashboard');
-    } catch {
+    } catch(err) {
+      console.log(err.message)
       setError('Failed to sign in');
     }
     setLoading(false);

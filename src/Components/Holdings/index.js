@@ -1,12 +1,13 @@
 import { createContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import userShares from '../../libs';
+import { updateHoldings } from '../../helper';
 import SharesInput from './SharesInput';
 import SharesViewer from './SharesViewer';
-import { Container } from '@chakra-ui/react';
-import { updateHoldings } from '../../helper';
 import CurrencyInput from './CurrencyInput';
-import Balance from './Balance/Balance';
 import BalanceDisplay from './BalanceDisplay/BalanceDisplay';
+import Balance from './Balance/Balance';
+import { Container, Button } from '@chakra-ui/react';
 
 export const HoldingContext = createContext();
 
@@ -40,7 +41,7 @@ const Holdings = () => {
 
   return (
     <HoldingContext.Provider value={{ currency }}>
-      <Container maxW="container.xl" my="5">
+      <Container maxW="container.xl" my="5" centerContent>
         <p style={{ textAlign: 'center' }}>
           Track your investments and check your current live balance.
         </p>
@@ -53,6 +54,9 @@ const Holdings = () => {
           setHasBalance={setHasBalance}
           currency={currency}
         />
+        <Button m={2}>
+        <Link to="/holdings/gain-losses">💰 The Math of Gains and Losses 💰</Link>{' '}
+        </Button>
         <BalanceDisplay
           liveBalance={liveBalance}
           investedBalance={investedBalance}
