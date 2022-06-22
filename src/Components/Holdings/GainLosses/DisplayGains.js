@@ -12,7 +12,6 @@ import {
   StatNumber,
   StatArrow,
   StatGroup,
-  Box,
 } from '@chakra-ui/react';
 
 const probabilityOfRecover = [
