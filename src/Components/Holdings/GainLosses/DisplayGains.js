@@ -45,11 +45,13 @@ const DisplayGains = ({ losses, neededGains }) => {
     <Container>
       <StatGroup
         textAlign="center"
-        p={2}
+        p={3}
         border="1px"
         borderRadius="md"
         borderColor="gray.200"
         mb={8}
+        mt={8}
+        // m={8}
       >
         <Stat>
           <StatLabel>Losses</StatLabel>
@@ -70,10 +72,10 @@ const DisplayGains = ({ losses, neededGains }) => {
       </StatGroup>
 
       {probability.length > 0 && (
-        <Container centerContent p={0}>
+        <Container centerContent p={0} mb={8}>
           <p style={{ marginBottom: '1rem' }}>
-            Percentage chance of recovery <b>{probability[0].lossesPercent}%</b>*
-            
+            Percentage chance of recovery <b>{probability[0].lossesPercent}%</b>
+            *
           </p>
           <Container p={0} overflowX="auto">
             <Table size="sm" variant="striped" colorScheme="gray">

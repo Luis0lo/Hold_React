@@ -8,13 +8,20 @@ import {
   FormHelperText,
   Input,
   Button,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
 } from '@chakra-ui/react';
 
 const InputLosses = ({ setLosses, losses, setNeededGains }) => {
   const [input, setInput] = useState(0);
-  const isError = losses === '' || losses > 99.9 || losses < 0;
+  // const format = (val) => `%` + val;
+  // const parse = (val) => val.replace(/%/, '');
 
-  const handleInputChange = (e) => setInput(e.target.value);
+  const isError = losses === '' || losses > 99.9 || losses < 0; //this line is required for the normla input fiel
+  // const handleInputChange = (e) => setInput(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,12 +36,30 @@ const InputLosses = ({ setLosses, losses, setNeededGains }) => {
     return result;
   }
   return (
-    <Container maxW="container.xl" my="5" centerContent>
-      <Heading size="lg">The Math of Gains and Losses</Heading>
+    <Container maxW="container.xl" my="8" centerContent>
+      <Heading size="lg">The Math of Gains & Losses</Heading>
       <form onSubmit={handleSubmit}>
         <FormControl isInvalid={isError} my="5">
           <FormLabel htmlFor="losses">Losses in Percentage </FormLabel>
-          <Input
+          <NumberInput
+            // value={format(input)}
+            // onChange={(valueString) => setInput(parse(valueString))}
+            onChange={(valueString) => setInput(valueString)}
+            value={input}
+            max={99}
+            min={1}
+          >
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+          <FormHelperText>
+            Enter the percentage you'd like to see how much do you need to
+            recover.
+          </FormHelperText>
+          {/* <Input
             isRequired
             id="losses"
             type="number"
@@ -50,10 +75,14 @@ const InputLosses = ({ setLosses, losses, setNeededGains }) => {
             <FormErrorMessage>
               You must insert a positive number inferior to 100
             </FormErrorMessage>
-          )}
+          )} */}
         </FormControl>
         <FormControl>
-          <Button type="Submit">Check</Button>
+          <Container textAlign="right" p={0}>
+            <Button textAlign="left" type="Submit">
+              Check
+            </Button>
+          </Container>
         </FormControl>
       </form>
     </Container>
