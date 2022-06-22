@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Container,
   Heading,
@@ -10,16 +11,17 @@ import {
 } from '@chakra-ui/react';
 
 const InputLosses = ({ setLosses, losses, setNeededGains }) => {
-  const isError = losses === '' || losses > 99.9;
+  const [input, setInput] = useState(0);
+  const isError = losses === '' || losses > 99.9 || losses < 0;
 
-  const handleInputChange = (e) => setLosses(e.target.value);
+  const handleInputChange = (e) => setInput(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(recoverFromLoss(losses));
-    const result = recoverFromLoss(losses);
+    setLosses(input);
+    const result = recoverFromLoss(input);
     setNeededGains(result);
-    setLosses(0);
+    // setLosses(0);
   };
 
   function recoverFromLoss(pc) {
@@ -36,7 +38,7 @@ const InputLosses = ({ setLosses, losses, setNeededGains }) => {
             isRequired
             id="losses"
             type="number"
-            value={losses}
+            value={input}
             onChange={handleInputChange}
           />
           {!isError ? (
@@ -46,7 +48,7 @@ const InputLosses = ({ setLosses, losses, setNeededGains }) => {
             </FormHelperText>
           ) : (
             <FormErrorMessage>
-              You must insert a number inferior to 100
+              You must insert a positive number inferior to 100
             </FormErrorMessage>
           )}
         </FormControl>
