@@ -42,7 +42,7 @@ const Weather = () => {
         setFavouriteLocations(favLocations);
       }
     }else{
-
+      setLocation('London')
     }
   }, []);
 
