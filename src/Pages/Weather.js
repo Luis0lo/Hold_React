@@ -22,10 +22,27 @@ const Weather = () => {
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
   const hereApiKey = process.env.REACT_APP_HERE_API_KEY;
 
+  function isLocalStorageAvailable() {
+    var test = 'test';
+    try {
+      localStorage.setItem(test, test);
+      localStorage.removeItem(test);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   useEffect(() => {
-    const favLocations = JSON.parse(localStorage.getItem('favouriteLocations'));
-    if (favLocations !== null) {
-      setFavouriteLocations(favLocations);
+    if (isLocalStorageAvailable()) {
+      const favLocations = JSON.parse(
+        localStorage.getItem('favouriteLocations')
+      );
+      if (favLocations !== null) {
+        setFavouriteLocations(favLocations);
+      }
+    }else{
+
     }
   }, []);
 
