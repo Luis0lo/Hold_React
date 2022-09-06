@@ -18,7 +18,7 @@ const Weather = () => {
   const [dayDetails, setDayDetails] = useState([]);
   const [favouriteLocations, setFavouriteLocations] = useState([]);
   const [favLocationWeather, setFavLocationWeather] = useState([]);
-
+ 
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
   const hereApiKey = process.env.REACT_APP_HERE_API_KEY;
 
@@ -223,7 +223,7 @@ const Weather = () => {
         removeFavouriteLocation={removeFavouriteLocation}
         favouriteLocations={favouriteLocations}
       />
-      {dayDetails && <WeekWeather
+      {dayDetails.length > 0 && <WeekWeather
         weather={weather}
         dayDetails={dayDetails}
         selectDay={selectDay}
