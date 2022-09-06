@@ -223,11 +223,11 @@ const Weather = () => {
         removeFavouriteLocation={removeFavouriteLocation}
         favouriteLocations={favouriteLocations}
       />
-      <WeekWeather
+      {weather.length > 0 &&<WeekWeather
         weather={weather}
         dayDetails={dayDetails}
         selectDay={selectDay}
-      />
+      />}
       <DayWeather
         weather={weather}
         dayDetails={dayDetails}
